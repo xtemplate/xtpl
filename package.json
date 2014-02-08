@@ -1,0 +1,30 @@
+{
+  "name": "xtpl",
+  "version": "0.1.0",
+  "description": "a template engine based on kissy-xtemplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4simple/xtpl"
+  },
+  "keywords": [
+    "xtpl",
+    "kissy",
+    "kissy-xtemplate",
+    "express"
+  ],
+  "author": "4simple",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/4simple/xtpl/issues"
+  },
+  "dependencies": {
+    "kissy": "~1.4.1-3"
+  },
+  "devDependencies": {
+    "express": "~3.4.8"
+  }
+}
