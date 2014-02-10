@@ -1,10 +1,10 @@
 {
   "name": "xtpl",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "a template engine based on kissy-xtemplate",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test"
   },
   "repository": {
     "type": "git",

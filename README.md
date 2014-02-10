@@ -5,14 +5,10 @@ a template engine based on kissy-xtemplate
 
 ## layout
 
-    {{!layout layoutname}}
+    {{!layout "./layoutname"}}
 
 layout tag must be at the top of template file.
 
-
-## inlucde
-
-    {{!include template}}
 
 ## Example
 
