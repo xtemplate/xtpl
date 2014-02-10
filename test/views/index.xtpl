@@ -1,2 +1,2 @@
-{{!layout layout1}}
+{{!layout "layout1"}}
 {{title}}

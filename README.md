@@ -26,7 +26,7 @@ layout tag must be at the top of template file.
 
 index.xtpl
 
-    {{!layout layout1}}
+    {{!layout "layout1"}}
     {{title}}
 
 layout1.xtpl
@@ -38,9 +38,9 @@ layout1.xtpl
     <title>{{title}}</title>
     </head>
     <body>
-    {{!include header}}
-    {{!include ./sub/header}}
+    {{!include "header"}}
+    {{!include "./sub/header"}}
     {{!block}}
-    {{!include footer}}
+    {{!include "footer"}}
     </body>
     </html>
