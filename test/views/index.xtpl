@@ -1,4 +1,2 @@
-{{#macro "block"}}
+{{!layout "./layout1"}}
 <h2>{{title}}</h2>
-{{/macro}}
-{{include "./layout.xtpl"}}
