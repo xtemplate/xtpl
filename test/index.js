@@ -14,6 +14,10 @@ app.disable("view cache");
 app.set("views", path.join(__dirname, "views"));
 
 app.get("/", function(req, res) {
+    res.render("index", {title: "xtpl engine!"})
+});
+
+app.get("/main", function(req, res) {
     res.render("main/index", {title: "xtpl engine!"})
 });
 
