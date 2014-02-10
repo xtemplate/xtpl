@@ -6,7 +6,7 @@
 </head>
 <body>
 {{{include "./header"}}}
-{{{block}}}122
+{{{block}}}
 {{{include "./footer"}}}
 </body>
 </html>

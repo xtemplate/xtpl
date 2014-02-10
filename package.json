@@ -1,6 +1,6 @@
 {
   "name": "xtpl",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "a template engine based on kissy-xtemplate",
   "main": "index.js",
   "scripts": {
