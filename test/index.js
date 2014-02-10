@@ -9,6 +9,8 @@ var path = require("path");
 var app = require("express")();
 
 app.set("view engine", "xtpl");
+app.disable("view cache");
+// app.enable("view cache");
 app.set("views", path.join(__dirname, "views"));
 
 app.get("/", function(req, res) {
