@@ -1,13 +1,19 @@
 xtpl
 ====
 
-a template engine based on kissy-xtemplate
+a template engine based on kissy-xtemplate(easier in express).
+
+    app.set("view engine", "xtpl");
 
 ## layout
 
     {{!layout "./layoutname"}}
 
-layout tag must be at the top of template file.
+layout tag must be at the top of template file. (default layout: "./layout").
+
+And you can set `views options` to specify layout config.
+
+    app.set("views options", {"defaultLayout": false, "layout": true});
 
 
 ## Example

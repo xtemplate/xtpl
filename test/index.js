@@ -12,6 +12,7 @@ app.set("view engine", "xtpl");
 app.disable("view cache");
 // app.enable("view cache");
 app.set("views", path.join(__dirname, "views"));
+app.set("views options", {defaultLayout: false, layout: true});
 
 app.get("/", function(req, res) {
     res.render("index", {title: "xtpl engine!"})
