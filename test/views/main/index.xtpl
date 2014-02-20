@@ -1,3 +1,2 @@
-{{!layout "../layout1"}}
 <h2>main<h2>
 {{title}}

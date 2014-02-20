@@ -7,13 +7,9 @@ a template engine based on kissy-xtemplate(easier in express).
 
 ## layout
 
-    {{!layout "./layoutname"}}
+```{{!layout}}``` tag not be supported since 0.4.0, and instead of ```{{exntend}}```
 
-layout tag must be at the top of template file. (default layout: "./layout").
-
-And you can set `views options` to specify layout config.
-
-    app.set("views options", {"defaultLayout": false, "layout": true});
+    {{extend "./layout"}}
 
 
 ## Example
@@ -28,8 +24,17 @@ And you can set `views options` to specify layout config.
 
 index.xtpl
 
-    {{!layout "./layout1"}}
-    {{title}}
+    {{extend "./layout1"}}
+
+    {{#block "head"}}
+    <!--index head block-->
+    <link type="text/css" href="test.css" rev="stylesheet" rel="stylesheet"  />
+    {{/block}}
+
+    {{#block "body"}}
+    <!--index body block-->
+    <h2>{{title}}</h2>
+    {{/block}}
 
 layout1.xtpl
     
@@ -38,10 +43,40 @@ layout1.xtpl
     <head>
     <meta name="charset" content="utf-8" />
     <title>{{title}}</title>
+    {{{block "head"}}}
     </head>
     <body>
     {{{include "./header"}}}
-    {{{block}}}
+    {{{block "body"}}}
     {{{include "./footer"}}}
+    </body>
+    </html>
+    
+ 
+render
+ 
+    res.render("index", {title: "xtpl engine!"})
+
+output
+
+    <!doctype html>
+    <html>
+    <head>
+    <meta name="charset" content="utf-8" />
+    <title>xtpl engine!</title>
+
+    <!--index head block-->
+    <link type="text/css" href="test.css" rev="stylesheet" rel="stylesheet"  />
+
+    </head>
+    <body>
+    <h1>header</h1>
+    <h2>sub header</h2>
+    
+    <!--index body block-->
+    <h2>xtpl engine!</h2>
+
+    <h1>footer</h1>
+
     </body>
     </html>

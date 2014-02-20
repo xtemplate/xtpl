@@ -1,2 +1,11 @@
-{{!layout "./layout1"}}
+{{extend "./layout1"}}
+
+{{#block "head"}}
+<!--index head block-->
+<link type="text/css" href="test.css" rev="stylesheet" rel="stylesheet"  />
+{{/block}}
+
+{{#block "body"}}
+<!--index body block-->
 <h2>{{title}}</h2>
+{{/block}}
