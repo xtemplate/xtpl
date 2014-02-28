@@ -5,11 +5,13 @@ a template engine based on kissy-xtemplate(easier in express).
 
     app.set("view engine", "xtpl");
 
+and you can specify template file encoding(requires `iconv-lite`):
+
+    app.set("view encoding", "gbk");
+
 ## layout
 
-```{{!layout}}``` tag not be supported since 0.4.0, and instead of ```{{exntend}}```
-
-    {{extend "./layout"}}
+    {{extend ("./layout")}}
 
 
 ## Example
@@ -24,14 +26,14 @@ a template engine based on kissy-xtemplate(easier in express).
 
 index.xtpl
 
-    {{extend "./layout1"}}
+    {{extend ("./layout1")}}
 
-    {{#block "head"}}
+    {{#block ("head")}}
     <!--index head block-->
     <link type="text/css" href="test.css" rev="stylesheet" rel="stylesheet"  />
     {{/block}}
 
-    {{#block "body"}}
+    {{#block ("body")}}
     <!--index body block-->
     <h2>{{title}}</h2>
     {{/block}}
@@ -43,12 +45,12 @@ layout1.xtpl
     <head>
     <meta name="charset" content="utf-8" />
     <title>{{title}}</title>
-    {{{block "head"}}}
+    {{{block ("head")}}}
     </head>
     <body>
-    {{{include "./header"}}}
-    {{{block "body"}}}
-    {{{include "./footer"}}}
+    {{{include (./header)}}}
+    {{{block ("body")}}}
+    {{{include ("./footer")}}}
     </body>
     </html>
     

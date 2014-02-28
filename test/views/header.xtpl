@@ -1,2 +1,2 @@
 <h1>header</h1>
-{{{include "./sub/header"}}}
+{{{include ("./sub/header")}}}

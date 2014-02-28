@@ -9,6 +9,7 @@ var path = require("path");
 var app = require("express")();
 
 app.set("view engine", "xtpl");
+app.set("view encoding", "gbk");
 app.disable("view cache");
 // app.enable("view cache");
 app.set("views", path.join(__dirname, "views"));

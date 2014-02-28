@@ -1,13 +1,14 @@
 <!doctype html>
 <html>
 <head>
-<meta name="charset" content="utf-8" />
+<meta name="charset" content="gbk" />
 <title>{{title}}</title>
-{{{block "head"}}}
+{{{block ("head")}}}
 </head>
 <body>
-{{{include "./header"}}}
-{{{block "body"}}}
-{{{include "./footer"}}}
+ÖÐ¹ú
+{{{include ("./header")}}}
+{{{block ("body")}}}
+{{{include ("./footer")}}}
 </body>
 </html>
