@@ -1,6 +1,6 @@
 {
   "name": "xtpl",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "a template engine based on kissy-xtemplate",
   "main": "./lib/xtemplate",
   "scripts": {
