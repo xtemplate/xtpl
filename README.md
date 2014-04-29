@@ -1,7 +1,7 @@
 xtpl
 ====
 
-a template engine based on kissy-xtemplate(easier in express).
+a template engine based on kissy xtemplate(easier in express).
 
     app.set("view engine", "xtpl");
 
@@ -48,7 +48,7 @@ layout1.xtpl
     {{{block ("head")}}}
     </head>
     <body>
-    {{{include (./header)}}}
+    {{{include ("./header")}}}
     {{{block ("body")}}}
     {{{include ("./footer")}}}
     </body>
@@ -82,3 +82,14 @@ output
 
     </body>
     </html>
+    
+
+## changelog
+
+### 0.8.0
+
+* 相对于 [kissy 1.4.2 xtemplate](http://docs.kissyui.com/1.4/docs/html/demo/xtemplate/index.html) 语法增强修改：https://github.com/kissyteam/kissy/issues/570
+* 支持异步命令：https://github.com/kissyteam/kissy/issues/587
+* 修复 {{1}}} 渲染问题：https://github.com/kissyteam/kissy/issues/596
+* 支持模型内命令带参数调用：https://github.com/kissyteam/kissy/issues/616
+* 支持继承: https://github.com/kissyteam/kissy/issues/564
