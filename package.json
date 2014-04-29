@@ -1,7 +1,11 @@
 {
   "name": "xtpl",
   "version": "0.8.0",
-  "description": "a template engine based on kissy-xtemplate",
+  "description": "a template engine based on kissy xtemplate",
+  "author": "yiminghe <yiminghe@gmail.com>",
+  "contributors": [
+    "4simple <wondger@qq.com>"
+  ],
   "main": "./lib/xtemplate",
   "scripts": {
     "test": "node test"
@@ -16,7 +20,6 @@
     "kissy-xtemplate",
     "express"
   ],
-  "author": "4simple",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/4simple/xtpl/issues"
