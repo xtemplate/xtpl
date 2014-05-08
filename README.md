@@ -86,6 +86,11 @@ output
 
 ## changelog
 
+### 0.9.0
+
+* 优化性能
+* 删除 clearCache 接口
+
 ### 0.8.0
 
 * 相对于 [kissy 1.4.2 xtemplate](http://docs.kissyui.com/1.4/docs/html/demo/xtemplate/index.html) 语法增强修改：https://github.com/kissyteam/kissy/issues/570
