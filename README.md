@@ -86,10 +86,10 @@ output
 
 ## changelog
 
-### 0.9.0
+### 0.9.3
 
 * 优化性能
-* 删除 clearCache 接口
+* 直接使用 kissy5.0.0-alpha.1
 
 ### 0.8.0
 
