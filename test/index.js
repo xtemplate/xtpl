@@ -22,6 +22,10 @@ app.get("/main", function(req, res) {
     res.render("main/index", {title: "xtpl engine!"})
 });
 
+app.use(app.router);
+
+app.use(require("express").errorHandler());
+
 app.listen(3001, function() {
     console.log("xtpl test sever start : 3001")
 });

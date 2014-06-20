@@ -8,4 +8,9 @@
 {{#block ("body")}}
 <!--index body block-->
 <h2>{{title}}</h2>
+
+{{title}}
+{{#each(range(0,6))}}
+{{this}}
+{{/each}}
 {{/block}}

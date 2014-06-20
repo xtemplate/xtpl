@@ -86,6 +86,11 @@ output
 
 ## changelog
 
+### 0.11.0
+
+* bug fix
+* tutorial https://github.com/kissyteam/kissy/issues/645
+
 ### 0.10.0
 
 * 升级 kissy5.0.0-alpha.3
