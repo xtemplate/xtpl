@@ -1,5 +1,5 @@
 markdown: kramdown
-pygments: true
+highlighter: pygments
 baseUrl: /xtpl
 kramdown:
   input: GFM
