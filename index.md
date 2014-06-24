@@ -496,6 +496,7 @@ Buffer write(data:String, escape:Boolean) // 写数据到缓冲区
 </table>
 
 
+
 ```javascript
 Buffer async(fn:Function) // 产生新的异步缓冲区，新的缓冲区为 fn 回调函数的第一个参数
 
