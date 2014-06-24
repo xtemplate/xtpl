@@ -450,15 +450,21 @@ xtpl.XTemplate.addCommand('xInline',function(scope, option,buffer){
 
 ```javascript
 KISSY.use('xtemplate/runtime',function(S,XTemplate){
-    XTemplate.addCommand(...) // 同 node
+    XTemplate.addCommand(...) // 同 nodejs
 });
 ```
 
 局部：
 
+x-xtpl.html:
+
+```
+{{x()}}
+```
+
 ```javascript
-KISSY.use('xtemplate/runtime',function(S,XTemplate){
-    new XTemplate('{{x()}}',{
+KISSY.use('xtemplate/runtime, x-xtpl',function(S,XTemplate,x){
+    new XTemplate(x, {
         commands:{
             x:function(){
                 // ... 同 node
