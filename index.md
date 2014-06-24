@@ -12,6 +12,7 @@ XTemplate/XTemplateRuntime
 
 构造器参数
 
+
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -56,9 +57,11 @@ XTemplate/XTemplateRuntime
     </tbody>
 </table>
 
+
 ### Methods
 
 String render(data:Object, callback:Function): 渲染数据，参数含义如下
+
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -87,13 +90,13 @@ String render(data:Object, callback:Function): 渲染数据，参数含义如下
 
 ### 载入 kissy
 
-``` html
+```html
 <script src='http://g.tbcdn.cn/kissy/edge/2014.06.23/seed.js' data-config='{combine:true}'></script>
 ```
 
 ### 未预编译
 
-``` javascript
+```javascript
 KISSY.use('xtemplate',function(S,XTemplate){
   new XTemplate('{{x}}',{name: 'x-tpl'}).render({x:1},function(error,z){
     // z=>1
@@ -108,7 +111,7 @@ npm install kissy@5.0.0-alpha.4 -g
 kissy-xtemplate -p x/   // x/ 为模板文件目录，后缀为 -xtpl.html
 ```
 
-``` javascript
+```javascript
 KISSY.use('xtemplate/runtime,a/b-xtpl',function(S,XTemplateRuntime,bXtpl){
   new XTemplateRuntime(bXtpl).render({x:1},function(error,z){
     // z=>1
@@ -122,7 +125,7 @@ KISSY.use('xtemplate/runtime,a/b-xtpl',function(S,XTemplateRuntime,bXtpl){
 
 express 下使用:
 
-``` javascript
+```javascript
 app.set("view engine", "xtpl");
 ```
 
@@ -166,7 +169,7 @@ app.set("view engine", "xtpl");
 
 ### 支持变量属性获取
 
-``` javascript
+```javascript
 var x = {
     y: 1
 };
@@ -187,7 +190,7 @@ var x = 'q';
 
 注意：该用法会影响性能，推荐自定义命令
 
-``` javascript
+```javascript
 var x = [1, 2, 3];
 ```
 
@@ -210,7 +213,7 @@ var x = [1, 2, 3];
 支持 === !=== > >= < <=
 
 ```
-{{#if( x===1)}}
+{{#if( x===1 )}}
 1
 {{else}}
 2
@@ -238,7 +241,7 @@ var x = [1, 2, 3];
 
 可以对数组或对象进行循环操作，默认获取循环对象值为 {{this}}，键为 {{xindex}} , 也可以指定.
 
-``` javascript
+```javascript
 var x = ['a', 'b'];
 ```
 
@@ -298,7 +301,7 @@ y.xtpl
 
 layout.xtpl
 
-``` html
+```html
 <!doctype html>
 <html>
     <head>
@@ -316,7 +319,7 @@ layout.xtpl
 
 index.xtpl
 
-``` html
+```html
 {{extend ("./layout1")}}
 
 // 填
@@ -336,7 +339,7 @@ index.xtpl
 
 同步调用行内：
 
-``` javascript
+```javascript
 var xtpl = require('xtpl');
 xtpl.XTemplate.addCommand('xInline',function(scope, option){
   return option.params[0]+'1';
@@ -348,7 +351,7 @@ xtpl.XTemplate.addCommand('xInline',function(scope, option){
 
 或使用 buffer (详见下面 Buffer api)
 
-``` javascript
+```javascript
 var xtpl = require('xtpl');
 xtpl.XTemplate.addCommand('xInline',function(scope, option, buffer){
   return buffer.write(option.params[0]+'1');
@@ -363,7 +366,7 @@ xtpl.XTemplate.addCommand('xInline',function(scope, option, buffer){
 
 同步调用块级：
 
-``` javascript
+```javascript
 var xtpl = require('xtpl');
 xtpl.XTemplate.addCommand('xBlock',function(scope, option, buffer){
   return option.fn(scope, buffer)+option.params[0];
@@ -379,7 +382,7 @@ xtpl.XTemplate.addCommand('xBlock',function(scope, option, buffer){
 
 异步调用行内
 
-``` javascript
+```javascript
 var xtpl = require('xtpl');
 xtpl.XTemplate.addCommand('xInline',function(scope, option,buffer){
   buffer = buffer.async(function(newBuffer){
@@ -397,7 +400,7 @@ xtpl.XTemplate.addCommand('xInline',function(scope, option,buffer){
 
 异步调用块级：
 
-``` javascript
+```javascript
 var xtpl = require('xtpl');
 xtpl.XTemplate.addCommand('xInline',function(scope, option,buffer){
   buffer = buffer.async(function(newBuffer){
@@ -423,7 +426,7 @@ xtpl.XTemplate.addCommand('xInline',function(scope, option,buffer){
 
 全局：
 
-``` javascript
+```javascript
 KISSY.use('xtemplate/runtime',function(S,XTemplate){
     XTemplate.addCommand(...) // 同 node
 });
@@ -431,7 +434,7 @@ KISSY.use('xtemplate/runtime',function(S,XTemplate){
 
 局部：
 
-``` javascript
+```javascript
 KISSY.use('xtemplate/runtime',function(S,XTemplate){
     new XTemplate('{{x()}}',{
         commands:{
