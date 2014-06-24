@@ -2,7 +2,6 @@
 layout: default
 title: xtpl overview
 ---
-
 {% raw %}
 
 ## 基本 api
