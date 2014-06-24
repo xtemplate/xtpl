@@ -3,6 +3,8 @@ layout: default
 title: xtpl overview
 ---
 
+{% raw %}
+
 ## 基本 api
 
 ### Class
@@ -84,6 +86,12 @@ String render(data:Object, callback:Function): 渲染数据，参数含义如下
 
 ## 浏览器端使用
 
+### 载入 kissy
+
+``` html
+<script src='http://g.tbcdn.cn/kissy/edge/2014.06.23/seed.js' data-config='{combine:true}'></script>
+```
+
 ### 未预编译
 
 ``` javascript
@@ -97,7 +105,7 @@ KISSY.use('xtemplate',function(S,XTemplate){
 ### 预编译
 
 ```
-npm install kissy@5.0.0-alpha.2 -g
+npm install kissy@5.0.0-alpha.4 -g
 kissy-xtemplate -p x/   // x/ 为模板文件目录，后缀为 -xtpl.html
 ```
 
@@ -442,10 +450,6 @@ KISSY.use('xtemplate/runtime',function(S,XTemplate){
 
 Buffer write(data:String, escape:Boolean): 写数据到缓冲区
 
----
-layout: post
-title: xtpl overview
----
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -498,3 +502,5 @@ var getData(): 获取当前作用域内数据
 void set(name,value): 设置当前作用域内附属数据
 
 void get(name): 获取当前作用域内数据值（包括附属数据）
+
+{% endraw %}
