@@ -542,4 +542,8 @@ void set(name, value) // 设置当前作用域内附属数据
 void get(name) // 获取当前作用域内数据值（包括附属数据）
 ```
 
+## performance
+
+[http://jsperf.com/xtpl](http://jsperf.com/xtpl)
+
 {% endraw %}
