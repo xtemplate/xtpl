@@ -129,7 +129,11 @@ KISSY.use('xtemplate/runtime,a/b-xtpl',function(S,XTemplateRuntime,bXtpl){
 
 ## node 下使用
 
-包：https://www.npmjs.org/package/xtpl
+安装:
+
+```
+npm install xtpl
+```
 
 express 下使用:
 
