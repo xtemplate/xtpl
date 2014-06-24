@@ -1,3 +1,4 @@
+markdown: kramdown
 baseUrl: /xtpl
 kramdown:
   input: GFM
