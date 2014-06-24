@@ -1,4 +1,2 @@
-markdown: kramdown
+markdown: redcarpet
 baseUrl: /xtpl
-kramdown:
-  input: GFM
