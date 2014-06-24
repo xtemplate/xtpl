@@ -1,0 +1,3 @@
+baseUrl: /xtpl
+kramdown:
+  input: GFM
