@@ -91,7 +91,9 @@ String render(data:Object, callback:Function): 渲染数据，参数含义如下
 ### 载入 kissy
 
 ```html
-<script src='http://g.tbcdn.cn/kissy/edge/2014.06.23/seed.js' data-config='{combine:true}'></script>
+<script src='http://g.tbcdn.cn/kissy/edge/2014.06.23/seed.js' 
+
+data-config='{combine:true}'></script>
 ```
 
 ### 未预编译
@@ -287,12 +289,14 @@ var x = ['a', 'b'];
 
 ### 包含操作
 
-x.xtpl:
+x.xtpl
+
 ```
 {{z}}
 ```
 
 y.xtpl
+
 ```
 {{include("x")}}
 ```
@@ -450,8 +454,9 @@ KISSY.use('xtemplate/runtime',function(S,XTemplate){
 
 #### Methods
 
-Buffer write(data:String, escape:Boolean): 写数据到缓冲区
-
+```javascript
+Buffer write(data:String, escape:Boolean) // 写数据到缓冲区
+```
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -475,34 +480,37 @@ Buffer write(data:String, escape:Boolean): 写数据到缓冲区
     </tbody>
 </table>
 
+```javascript
+Buffer async(fn:Function) // 产生新的异步缓冲区，新的缓冲区为 fn 回调函数的第一个参数
 
-Buffer async(fn:Function): 产生新的异步缓冲区，新的缓冲区为 fn 回调函数的第一个参数
+Buffer end(data, escape) // 参数含义同 write 函数。 标志缓冲区数据填充完毕，用于通知异步缓冲区的结束。
 
-Buffer end(data, escape): 参数含义同 write 函数。 标志缓冲区数据填充完毕，用于通知异步缓冲区的结束。
-
-Buffer error(reason): 触发 render 异步回调为失败。 reason 为回调的第一个参数.
-
+Buffer error(reason) // 触发 render 异步回调为失败。 reason 为回调的第一个参数.
+```
 
 ### Scope api
 
 
 #### Members
 
-parent: 上级作用域
+```javascript
+parent // 上级作用域
 
-root: 顶层作用域
-
+root // 顶层作用域
+```
 
 #### Methods
 
-void setParent(scope: Scope): 设置当前作用域的上级作用域
+```javascript
+void setParent(scope: Scope) // 设置当前作用域的上级作用域
 
-void setData(data): 设置当前作用域内数据
+void setData(data) // 设置当前作用域内数据
 
-var getData(): 获取当前作用域内数据
+var getData() // 获取当前作用域内数据
 
-void set(name,value): 设置当前作用域内附属数据
+void set(name, value) // 设置当前作用域内附属数据
 
-void get(name): 获取当前作用域内数据值（包括附属数据）
+void get(name) // 获取当前作用域内数据值（包括附属数据）
+```
 
 {% endraw %}
