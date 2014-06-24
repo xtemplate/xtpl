@@ -60,8 +60,10 @@ XTemplate/XTemplateRuntime
 
 ### Methods
 
-String render(data:Object, callback:Function): 渲染数据，参数含义如下
 
+```javascript
+String render(data:Object, callback:Function) // 渲染数据，参数含义如下
+```
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -86,9 +88,11 @@ String render(data:Object, callback:Function): 渲染数据，参数含义如下
 </table>
 
 
+
 ## 浏览器端使用
 
 ### 载入 kissy
+
 
 ```html
 <script src='http://g.tbcdn.cn/kissy/edge/2014.06.23/seed.js' 
@@ -97,6 +101,7 @@ data-config='{combine:true}'></script>
 ```
 
 ### 未预编译
+
 
 ```javascript
 KISSY.use('xtemplate',function(S,XTemplate){
@@ -107,6 +112,7 @@ KISSY.use('xtemplate',function(S,XTemplate){
 ```
 
 ### 预编译
+
 
 ```
 npm install kissy@5.0.0-alpha.4 -g
@@ -141,6 +147,7 @@ app.set("view engine", "xtpl");
 
 ### 字面模式
 
+
 ```
 {{%
 
@@ -150,6 +157,7 @@ app.set("view engine", "xtpl");
 ```
 
 ### 注释
+
 
 ```
 {{! zhu shi }}
@@ -170,6 +178,7 @@ app.set("view engine", "xtpl");
 ```
 
 ### 支持变量属性获取
+
 
 ```javascript
 var x = {
@@ -269,6 +278,7 @@ var x = ['a', 'b'];
 
 ### 设置操作
 
+
 ```
 {{set(x=1)}}
 
@@ -276,6 +286,7 @@ var x = ['a', 'b'];
 ```
 
 ### 宏
+
 
 ```
 // 声明
@@ -339,7 +350,9 @@ index.xtpl
 
 ### 自定义命令
 
+
 #### nodejs 全局命令
+
 
 同步调用行内：
 
@@ -428,6 +441,7 @@ xtpl.XTemplate.addCommand('xInline',function(scope, option,buffer){
 
 #### 浏览器命令
 
+
 全局：
 
 ```javascript
@@ -453,6 +467,7 @@ KISSY.use('xtemplate/runtime',function(S,XTemplate){
 ### Buffer api
 
 #### Methods
+
 
 ```javascript
 Buffer write(data:String, escape:Boolean) // 写数据到缓冲区
@@ -480,6 +495,7 @@ Buffer write(data:String, escape:Boolean) // 写数据到缓冲区
     </tbody>
 </table>
 
+
 ```javascript
 Buffer async(fn:Function) // 产生新的异步缓冲区，新的缓冲区为 fn 回调函数的第一个参数
 
@@ -493,6 +509,7 @@ Buffer error(reason) // 触发 render 异步回调为失败。 reason 为回调�
 
 #### Members
 
+
 ```javascript
 parent // 上级作用域
 
@@ -500,6 +517,7 @@ root // 顶层作用域
 ```
 
 #### Methods
+
 
 ```javascript
 void setParent(scope: Scope) // 设置当前作用域的上级作用域
