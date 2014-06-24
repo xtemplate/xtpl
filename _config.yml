@@ -1,5 +1,2 @@
-markdown: kramdown
-highlighter: pygments
+markdown: redcarpet
 baseUrl: /xtpl
-kramdown:
-  input: GFM
