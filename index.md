@@ -115,9 +115,44 @@ KISSY.use('xtemplate',function(S,XTemplate){
 
 
 ```
-npm install kissy@5.0.0-alpha.4 -g
-kissy-xtemplate -p x/   // x/ 为模板文件目录，后缀为 -xtpl.html
+npm install kissy@5.0.0-alpha.7 -g
+kissy-xtemplate -p x/   // x/ 为模板文件目录，模板后缀为 xtpl
 ```
+
+命令参数列表
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">name</th>
+        <th style="width: 50px;">type</th>
+        <th style="width: 50px;">default</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>-p</td>
+        <td>String</td>
+        <td></td>
+        <td>directory of xtemplate files</td>
+    </tr>
+    <tr>
+        <td>-s</td>
+        <td>String</td>
+        <td>xtpl</td>
+        <td>file name suffix of xtemplate files</td>
+    </tr>
+    <tr>
+        <td>-w</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>whether watch xtemplate file change</td>
+    </tr>
+    </tbody>
+</table>
+
+
 
 ```javascript
 KISSY.use('xtemplate/runtime,a/b-xtpl',function(S,XTemplateRuntime,bXtpl){
