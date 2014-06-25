@@ -86,6 +86,10 @@ output
 
 ## changelog
 
+### 0.13.0
+
+* 增加 xtpl 全局命令  xtpl -s html -p ./ , s: 文件后缀名， p 模板文件所在目录
+
 ### 0.12.1
 
 * support different encoding output
@@ -102,7 +106,6 @@ output
   * 支持 include 非 xtpl 文件（不解析）： https://github.com/kissyteam/kissy/issues/646
   * 支持渲染时动态设置命令：https://github.com/kissyteam/kissy/issues/637
   * 支持宏的默认参数值：https://github.com/kissyteam/kissy/issues/647
-
 
 ### 0.9.3
 

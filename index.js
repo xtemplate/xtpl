@@ -4,7 +4,6 @@
  * @author yiminghe@gmail.com
  */
 
-var S = require('kissy/lib/loader');
 var util = require('kissy/lib/util');
 var fs = require('fs');
 var Path = require('path');
@@ -13,7 +12,7 @@ try {
     iconv = require('iconv-lite');
 } catch (e) {
 }
-var XTemplate = S.nodeRequire('xtemplate');
+var XTemplate = require('kissy/lib/xtemplate');
 
 var globalConfig = {
     encoding: 'utf-8'
