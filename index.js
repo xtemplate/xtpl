@@ -135,7 +135,7 @@ function renderFile(path, options, callback) {
             loader: loader,
             cache: options.cache
         };
-        config.encoding = encoding || globalConfig.encoding;
+        encoding = config.encoding = encoding || globalConfig.encoding;
         getInstance(path, config, function (error, engine) {
             if (error) {
                 callback(error);

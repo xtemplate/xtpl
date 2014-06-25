@@ -86,7 +86,7 @@ output
 
 ## changelog
 
-### 0.12.0
+### 0.12.1
 
 * support different encoding output
 
