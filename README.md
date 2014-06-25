@@ -86,6 +86,10 @@ output
 
 ## changelog
 
+### 0.12.0
+
+* support different encoding output
+
 ### 0.11.0
 
 * bug fix

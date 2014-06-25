@@ -1,6 +1,6 @@
 {
   "name": "xtpl",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "a template engine based on kissy xtemplate",
   "author": "yiminghe <yiminghe@gmail.com>",
   "contributors": [
