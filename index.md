@@ -115,7 +115,7 @@ KISSY.use('xtemplate',function(S,XTemplate){
 
 
 ```
-npm install kissy@5.0.0-alpha.7 -g
+npm install kissy@5.0.0-alpha.9 -g
 kissy-xtemplate -p x/   // x/ 为模板文件目录，模板后缀为 xtpl
 ```
 
