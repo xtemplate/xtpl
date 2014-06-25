@@ -108,7 +108,7 @@ function readFile(path, config, callback) {
 
 var loader = {
     load: function (params, callback) {
-        var template = params.template;
+        var template = params.root;
         var path = params.name;
         template.extName = template.extName || Path.extname(template.config.name);
         var pathExtName = Path.extname(path);
@@ -140,15 +140,15 @@ function renderFile(path, options, callback) {
                 callback(error);
             } else {
                 // runtime commands
-                engine.render(options, {commands: options.commands}, function(e,content){
-                    if(e){
+                engine.render(options, {commands: options.commands}, function (e, content) {
+                    if (e) {
                         callback(e);
                         return;
                     }
-                    if(Buffer.isEncoding(encoding)){
-                        callback(e,content);
-                    }else{
-                        callback(e,iconv.encode(content,encoding));
+                    if (Buffer.isEncoding(encoding)) {
+                        callback(e, content);
+                    } else {
+                        callback(e, iconv.encode(content, encoding));
                     }
                 });
             }
