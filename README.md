@@ -86,10 +86,6 @@ output
 
 ## changelog
 
-### 0.13.0
-
-* 增加 xtpl 全局命令  xtpl -s html -p ./ , s: 文件后缀名， p 模板文件所在目录
-
 ### 0.12.1
 
 * support different encoding output
