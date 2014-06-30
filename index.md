@@ -216,6 +216,18 @@ app.set("view engine", "xtpl");
 {{{x}}}
 ```
 
+### 根数据访问
+
+```javascript
+var x = {name:1,arr:[{name:2}]}
+```
+
+```
+{{#each(arr)}}
+{{root.name}}{{name}} {{! 12 }}
+{{/each}}
+```
+
 ### 支持变量属性获取
 
 
