@@ -184,8 +184,9 @@ app.set("view engine", "xtpl");
 
 支持 true false null undefined number string
 
-### 字面模式
+### 转义
 
+#### 使用 {{%%}}
 
 ```
 {{%
@@ -194,6 +195,18 @@ app.set("view engine", "xtpl");
 
 %}}  // => {{x}}
 ```
+
+#### 使用 \{{
+
+```
+\{{a}}  // -> {{a}}
+```
+
+#### angularjs
+
+如果是 angularjs 的话，可以直接配置 angularjs 使用不同的标记
+
+[http://stackoverflow.com/questions/13671701/angularjs-twig-conflict-with-double-curly-braces](http://stackoverflow.com/questions/13671701/angularjs-twig-conflict-with-double-curly-braces)
 
 ### 注释
 
