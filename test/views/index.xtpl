@@ -1,4 +1,4 @@
-{{extend ("./layout1")}}
+{{extend ("./layout")}}
 
 {{#block ("head")}}
 <!--index head block-->

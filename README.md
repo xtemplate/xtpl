@@ -86,6 +86,10 @@ output
 
 ## changelog
 
+### 0.16.0
+
+* 同步读取文件，防止并发打开文件数过多
+
 ### 0.12.1
 
 * support different encoding output

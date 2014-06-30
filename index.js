@@ -76,34 +76,25 @@ function readFile(path, config, callback) {
     if (cache && fileCache[path]) {
         return callback(null, fileCache[path]);
     }
-    if (Buffer.isEncoding(encoding)) {
-        fs.readFile(path, {
-            encoding: encoding
-        }, function (error, content) {
-            if (error) {
-                callback(error);
-            } else {
-                if (cache) {
-                    fileCache[path] = content;
-                }
-                callback(undefined, content);
-            }
-        });
-    } else if (iconv) {
-        fs.readFile(path, function (error, buf) {
-            if (error) {
-                callback(error);
-            } else {
-                var content = iconv.decode(buf, encoding);
-                if (cache) {
-                    fileCache[path] = content;
-                }
-                callback(undefined, content);
-            }
-        });
-    } else {
-        callback('encoding: ' + encoding + ', npm install iconv-lite, please!');
+    var content, error;
+    try {
+        content = fs.readFileSync(path);
+    } catch (e) {
+        error = e;
     }
+    if (content) {
+        if (Buffer.isEncoding(encoding)) {
+            content = content.toString(encoding);
+        } else if (iconv) {
+            content = iconv.decode(content, encoding);
+        } else {
+            error = 'encoding: ' + encoding + ', npm install iconv-lite, please!';
+        }
+        if (!error && cache) {
+            fileCache[path] = content;
+        }
+    }
+    callback(error, content);
 }
 
 var loader = {
