@@ -312,7 +312,7 @@ var x = ['a', 'b'];
 {{xindex}} {{this}} // 0 a 1 b
 {{/each}}
 
-{{#each(x,"value","index")}}
+{{#each(x,"value","key")}}
 {{key}} {{value}} // 0 a 1 b
 {{/each}}
 ```
