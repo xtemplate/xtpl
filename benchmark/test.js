@@ -1,3 +1,8 @@
+/**
+ * benchmark between xtpl jade ejs dust handlebars nunjucks
+ * @author yiminghe@gmail.com
+ */
+
 var Benchmark = require('benchmark');
 var xtpl = require('../index');
 var path = require('path');
