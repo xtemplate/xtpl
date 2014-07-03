@@ -51,6 +51,7 @@ function done() {
 
         'onComplete': function () {
             console.log(this.toString());
+            console.log('');
         },
 
         'onError': function () {
@@ -74,6 +75,7 @@ function done() {
 
         'onComplete': function () {
             console.log(this.toString());
+            console.log('');
         },
 
         'onError': function () {
@@ -96,6 +98,7 @@ function done() {
 
         'onComplete': function () {
             console.log(this.toString());
+            console.log('');
         },
 
         'onError': function () {
@@ -118,6 +121,7 @@ function done() {
 
         'onComplete': function () {
             console.log(this.toString());
+            console.log('');
         },
 
         'onError': function () {
@@ -140,6 +144,7 @@ function done() {
 
         'onComplete': function () {
             console.log(this.toString());
+            console.log('');
         },
 
         'onError': function () {
@@ -162,6 +167,7 @@ function done() {
 
         'onComplete': function () {
             console.log(this.toString());
+            console.log('');
         },
 
         'onError': function () {
