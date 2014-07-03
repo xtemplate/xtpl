@@ -90,7 +90,7 @@ http://dev.kissyui.com/kissy/src/xtemplate/-/tests/runner
 ```
 cd benchmark
 npm install
-node test
+node index
 ```
 
 ```
