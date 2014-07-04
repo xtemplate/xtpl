@@ -39,7 +39,9 @@ function done() {
         ]
     };
 
-    new Benchmark('xtpl', {
+    var suite = new Benchmark.Suite();
+
+    suite.add('xtpl', {
         // a flag to indicate the benchmark is deferred
         'defer': true,
 
@@ -52,19 +54,10 @@ function done() {
                 // console.log(html);
                 deferred.resolve();
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
         }
-    }).run();
+    });
 
-    new Benchmark('jade', {
+    suite.add('jade', {
         // a flag to indicate the benchmark is deferred
         'defer': true,
 
@@ -76,19 +69,10 @@ function done() {
                 }
                 deferred.resolve();
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
         }
-    }).run();
+    });
 
-    new Benchmark('ejs', {
+    suite.add('ejs', {
         // a flag to indicate the benchmark is deferred
         'defer': true,
 
@@ -99,19 +83,10 @@ function done() {
                 }
                 deferred.resolve();
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
         }
-    }).run();
+    });
 
-    new Benchmark('dust', {
+    suite.add('dust', {
         // a flag to indicate the benchmark is deferred
         'defer': true,
 
@@ -122,19 +97,10 @@ function done() {
                 }
                 deferred.resolve();
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
         }
-    }).run();
+    });
 
-    new Benchmark('handlebars', {
+    suite.add('handlebars', {
         // a flag to indicate the benchmark is deferred
         'defer': true,
 
@@ -145,19 +111,10 @@ function done() {
                 }
                 deferred.resolve();
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
         }
-    }).run();
+    });
 
-    new Benchmark('nunjucks', {
+    suite.add('nunjucks', {
         // a flag to indicate the benchmark is deferred
         'defer': true,
 
@@ -168,15 +125,12 @@ function done() {
                 }
                 deferred.resolve();
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
         }
-    }).run();
+    });
+
+    suite.on('cycle', function (event) {
+        console.log(String(event.target));
+    }).on('complete', function () {
+        console.log('all is over')
+    }).run({ 'async': true });
 }
