@@ -14,11 +14,20 @@ var nunjucks = require('nunjucks');
 var consolidate = require('consolidate');
 var hbs = require('hbs').create(handlebars);
 var util = require('kissy/lib/util');
-hbs.registerPartials(__dirname + '/views/includes', done);
-nunjucks.configure(__dirname + '/views/includes');
 
-function done() {
-    var data = {
+// force synchronous
+dust.nextTick = function (callback) {
+    callback();
+};
+
+hbs.registerPartials(__dirname + '/views/includes', function () {
+    doCache(done);
+});
+
+nunjucks.configure(__dirname + '/views/includes');
+console.log('cache: true');
+function getData() {
+    return {
         cache: true,
         settings: {
             views: __dirname + '/views/includes'
@@ -38,145 +47,124 @@ function done() {
             }
         ]
     };
+}
 
-    new Benchmark('xtpl', {
-        // a flag to indicate the benchmark is deferred
-        'defer': true,
+function doCache(callback) {
+    var now = 0;
 
+    function ok() {
+        ++now;
+        if (now === 6) {
+            callback();
+        }
+    }
+
+    xtpl.renderFile(path.join(__dirname, 'views/includes/common.html'), getData(), ok);
+    jade.renderFile(path.join(__dirname, 'views/includes/common-jade.jade'), getData(), ok);
+    ejs.renderFile(path.join(__dirname, 'views/includes/common-ejs.ejs'), getData(), ok);
+    consolidate.dust(path.join(__dirname, 'views/includes/common-dust.html'), getData(), ok);
+    consolidate.handlebars(path.join(__dirname, 'views/includes/common-handlebars.html'), getData(), ok);
+    nunjucks.render('common-nunjucks.html', getData(), ok);
+}
+
+function done() {
+    var suite = new Benchmark.Suite();
+
+    suite.add('xtpl', {
         // benchmark test function
-        'fn': function (deferred) {
-            xtpl.renderFile(path.join(__dirname, 'views/includes/common.html'), data, function (err, html) {
+        'fn': function () {
+            var content;
+            xtpl.renderFile(path.join(__dirname, 'views/includes/common.html'), getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
-                // console.log(html);
-                deferred.resolve();
+                content = html;
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
+            if (!content) {
+                throw new Error('xtpl sync error');
+            }
         }
-    }).run();
+    });
 
-    new Benchmark('jade', {
-        // a flag to indicate the benchmark is deferred
-        'defer': true,
-
+    suite.add('jade', {
         // benchmark test function
-        'fn': function (deferred) {
-            jade.renderFile(path.join(__dirname, 'views/includes/common-jade.jade'), data, function (err, html) {
+        'fn': function () {
+            var content;
+            jade.renderFile(path.join(__dirname, 'views/includes/common-jade.jade'), getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
-                deferred.resolve();
+                content = html;
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
+            if (!content) {
+                throw new Error('jade sync error');
+            }
         }
-    }).run();
+    });
 
-    new Benchmark('ejs', {
-        // a flag to indicate the benchmark is deferred
-        'defer': true,
-
-        'fn': function (deferred) {
-            ejs.renderFile(path.join(__dirname, 'views/includes/common-ejs.ejs'), data, function (err, html) {
+    suite.add('ejs', {
+        'fn': function () {
+            var content;
+            ejs.renderFile(path.join(__dirname, 'views/includes/common-ejs.ejs'), getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
-                deferred.resolve();
+                content = html;
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
+            if (!content) {
+                throw new Error('ejs sync error');
+            }
         }
-    }).run();
+    });
 
-    new Benchmark('dust', {
-        // a flag to indicate the benchmark is deferred
-        'defer': true,
+    suite.add('dust', {
+        'fn': function () {
+            var content;
+            consolidate.dust(path.join(__dirname, 'views/includes/common-dust.html'), getData(), function (err, html) {
+                if (err) {
+                    throw rr;
+                }
+                content = html;
+            });
+            if (!content) {
+                throw new Error('dust sync error');
+            }
+        }
+    });
 
-        'fn': function (deferred) {
-            consolidate.dust(path.join(__dirname, 'views/includes/common-dust.html'), data, function (err, html) {
+    suite.add('handlebars', {
+        'fn': function () {
+            var content;
+            consolidate.handlebars(path.join(__dirname, 'views/includes/common-handlebars.html'), getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
-                deferred.resolve();
+                content = html;
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
+            if (!content) {
+                throw new Error('handlebars sync error');
+            }
         }
-    }).run();
+    });
 
-    new Benchmark('handlebars', {
-        // a flag to indicate the benchmark is deferred
-        'defer': true,
-
-        'fn': function (deferred) {
-            hbs.__express(path.join(__dirname, 'views/includes/common-handlebars.html'), data, function (err, html) {
+    suite.add('nunjucks', {
+        'fn': function () {
+            var content;
+            nunjucks.render('common-nunjucks.html', getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
-                deferred.resolve();
+                content = html;
             });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
+            if (!content) {
+                throw new Error('nunjucks sync error');
+            }
         }
-    }).run();
+    });
 
-    new Benchmark('nunjucks', {
-        // a flag to indicate the benchmark is deferred
-        'defer': true,
-
-        'fn': function (deferred) {
-            nunjucks.render('common-nunjucks.html', data, function (err, html) {
-                if (err) {
-                    throw err;
-                }
-                deferred.resolve();
-            });
-        },
-
-        'onComplete': function () {
-            console.log(this.toString());
-            console.log('');
-        },
-
-        'onError': function () {
-            console.log(arguments)
-        }
-    }).run();
+    suite.on('cycle', function (event) {
+        console.log(String(event.target));
+    }).on('complete', function () {
+        console.log('all is over');
+    }).run({ 'async': true });
 }
