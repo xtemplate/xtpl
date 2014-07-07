@@ -603,7 +603,7 @@ void set(name, value) // 设置当前作用域内附属数据
 void get(name) // 获取当前作用域内数据值（包括附属数据）
 ```
 
-## Reserved word
+## Reserved words
 
 **Xtemplate内置以下命令行，请避免重复定义同名命令**
 
