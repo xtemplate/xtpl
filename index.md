@@ -628,6 +628,6 @@ void get(name) // 获取当前作用域内数据值（包括附属数据）
 
 ### browser
 
-[xtpl jade ejs nunjucks handlebars dust](dev.kissyui.com/kissy/src/xtemplate/-/benchmark/)
+[xtpl jade ejs nunjucks handlebars dust](http://dev.kissyui.com/kissy/src/xtemplate/-/benchmark/)
 
 {% endraw %}
