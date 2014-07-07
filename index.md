@@ -622,6 +622,12 @@ void get(name) // 获取当前作用域内数据值（包括附属数据）
 
 ## performance
 
-[http://jsperf.com/xtpl](http://jsperf.com/xtpl)
+### node
+
+[xtpl jade ejs nunjucks handlebars dust](https://github.com/kissyteam/xtpl/tree/master/benchmark/result)
+
+### browser
+
+[xtpl jade ejs nunjucks handlebars dust](dev.kissyui.com/kissy/src/xtemplate/-/benchmark/)
 
 {% endraw %}
