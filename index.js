@@ -117,6 +117,10 @@ var loader = {
 };
 
 function renderFile(path, options, callback) {
+    if (typeof options === 'function') {
+        callback = options;
+        options = {};
+    }
     path = normalizeSlash(path);
     var encoding = options.settings && options.settings['view encoding'];
     try {
