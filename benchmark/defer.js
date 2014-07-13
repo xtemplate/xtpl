@@ -49,7 +49,7 @@ function done() {
 
         // benchmark test function
         'fn': function (deferred) {
-            xtpl.renderFile(path.join(__dirname, 'views/includes/common.html'), getData(), function (err, html) {
+            xtpl.renderFile(path.join(__dirname, 'views/includes/xtpl.html'), getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
@@ -65,7 +65,7 @@ function done() {
 
         // benchmark test function
         'fn': function (deferred) {
-            jade.renderFile(path.join(__dirname, 'views/includes/common-jade.jade'), getData(), function (err, html) {
+            jade.renderFile(path.join(__dirname, 'views/includes/jade.jade'), getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
@@ -79,7 +79,7 @@ function done() {
         'defer': true,
 
         'fn': function (deferred) {
-            ejs.renderFile(path.join(__dirname, 'views/includes/common-ejs.ejs'), getData(), function (err, html) {
+            ejs.renderFile(path.join(__dirname, 'views/includes/ejs.ejs'), getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
@@ -93,7 +93,7 @@ function done() {
         'defer': true,
 
         'fn': function (deferred) {
-            consolidate.dust(path.join(__dirname, 'views/includes/common-dust.html'), getData(), function (err, html) {
+            consolidate.dust(path.join(__dirname, 'views/includes/dust.html'), getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
@@ -107,7 +107,7 @@ function done() {
         'defer': true,
 
         'fn': function (deferred) {
-            consolidate.handlebars(path.join(__dirname, 'views/includes/common-handlebars.html'), getData(), function (err, html) {
+            consolidate.handlebars(path.join(__dirname, 'views/includes/handlebars.html'), getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }
@@ -121,7 +121,7 @@ function done() {
         'defer': true,
 
         'fn': function (deferred) {
-            nunjucks.render('common-nunjucks.html', getData(), function (err, html) {
+            nunjucks.render('nunjucks.html', getData(), function (err, html) {
                 if (err) {
                     throw err;
                 }

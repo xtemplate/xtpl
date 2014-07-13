@@ -3,7 +3,7 @@
  * @author yiminghe@gmail.com
  */
 
-    
+
 var Benchmark = require('benchmark');
 var xtpl = require('../index');
 var path = require('path');
@@ -53,19 +53,22 @@ function getData() {
 function doCache(callback) {
     var now = 0;
 
-    function ok() {
+    function ok(err) {
+        if(err){
+            console.log(err);throw err;
+        }
         ++now;
         if (now === 6) {
             callback();
         }
     }
 
-    xtpl.renderFile(path.join(__dirname, 'views/includes/common.html'), getData(), ok);
-    jade.renderFile(path.join(__dirname, 'views/includes/common-jade.jade'), getData(), ok);
-    ejs.renderFile(path.join(__dirname, 'views/includes/common-ejs.ejs'), getData(), ok);
-    consolidate.dust(path.join(__dirname, 'views/includes/common-dust.html'), getData(), ok);
-    consolidate.handlebars(path.join(__dirname, 'views/includes/common-handlebars.html'), getData(), ok);
-    nunjucks.render('common-nunjucks.html', getData(), ok);
+    xtpl.renderFile(path.join(__dirname, 'views/includes/xtpl.html'), getData(), ok);
+    jade.renderFile(path.join(__dirname, 'views/includes/jade.jade'), getData(), ok);
+    ejs.renderFile(path.join(__dirname, 'views/includes/ejs.ejs'), getData(), ok);
+    consolidate.dust(path.join(__dirname, 'views/includes/dust.html'), getData(), ok);
+    consolidate.handlebars(path.join(__dirname, 'views/includes/handlebars.html'), getData(), ok);
+    nunjucks.render('nunjucks.html', getData(), ok);
 }
 
 function done() {
@@ -75,9 +78,9 @@ function done() {
         // benchmark test function
         'fn': function () {
             var content;
-            xtpl.renderFile(path.join(__dirname, 'views/includes/common.html'), getData(), function (err, html) {
+            xtpl.renderFile(path.join(__dirname, 'views/includes/xtpl.html'), getData(), function (err, html) {
                 if (err) {
-                    throw err;
+                    console.log(err);throw err;
                 }
                 content = html;
             });
@@ -91,9 +94,9 @@ function done() {
         // benchmark test function
         'fn': function () {
             var content;
-            jade.renderFile(path.join(__dirname, 'views/includes/common-jade.jade'), getData(), function (err, html) {
+            jade.renderFile(path.join(__dirname, 'views/includes/jade.jade'), getData(), function (err, html) {
                 if (err) {
-                    throw err;
+                    console.log(err);throw err;
                 }
                 content = html;
             });
@@ -106,9 +109,9 @@ function done() {
     suite.add('ejs', {
         'fn': function () {
             var content;
-            ejs.renderFile(path.join(__dirname, 'views/includes/common-ejs.ejs'), getData(), function (err, html) {
+            ejs.renderFile(path.join(__dirname, 'views/includes/ejs.ejs'), getData(), function (err, html) {
                 if (err) {
-                    throw err;
+                    console.log(err);throw err;
                 }
                 content = html;
             });
@@ -121,9 +124,9 @@ function done() {
     suite.add('dust', {
         'fn': function () {
             var content;
-            consolidate.dust(path.join(__dirname, 'views/includes/common-dust.html'), getData(), function (err, html) {
+            consolidate.dust(path.join(__dirname, 'views/includes/dust.html'), getData(), function (err, html) {
                 if (err) {
-                    throw rr;
+                    console.log(err);throw err;
                 }
                 content = html;
             });
@@ -136,9 +139,9 @@ function done() {
     suite.add('handlebars', {
         'fn': function () {
             var content;
-            consolidate.handlebars(path.join(__dirname, 'views/includes/common-handlebars.html'), getData(), function (err, html) {
+            consolidate.handlebars(path.join(__dirname, 'views/includes/handlebars.html'), getData(), function (err, html) {
                 if (err) {
-                    throw err;
+                    console.log(err);throw err;
                 }
                 content = html;
             });
@@ -151,9 +154,9 @@ function done() {
     suite.add('nunjucks', {
         'fn': function () {
             var content;
-            nunjucks.render('common-nunjucks.html', getData(), function (err, html) {
+            nunjucks.render('nunjucks.html', getData(), function (err, html) {
                 if (err) {
-                    throw err;
+                    console.log(err);throw err;
                 }
                 content = html;
             });
