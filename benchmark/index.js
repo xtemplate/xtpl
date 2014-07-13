@@ -3,6 +3,7 @@
  * @author yiminghe@gmail.com
  */
 
+    
 var Benchmark = require('benchmark');
 var xtpl = require('../index');
 var path = require('path');
