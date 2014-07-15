@@ -96,6 +96,11 @@ node defer
 
 ## changelog
 
+### 0.17.0
+
+* 支持 map array 类型: https://github.com/kissyteam/kissy/issues/614
+* 支持 elseif: https://github.com/kissyteam/kissy/issues/664
+
 ### 0.16.0
 
 * 同步读取文件，防止并发打开文件数过多
