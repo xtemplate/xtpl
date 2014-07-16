@@ -6,8 +6,11 @@ title: xtpl overview
 
 ## 版本
 
-nodejs: 0.17
-browser: http://g.tbcdn.cn/kissy/edge/2014.07.16/seed.js
+### nodejs
+[0.17](https://www.npmjs.org/package/xtpl)
+
+### browser
+[http://g.tbcdn.cn/kissy/edge/2014.07.16/seed.js](http://g.tbcdn.cn/kissy/edge/2014.07.16/seed.js)
 
 ## 基本 api
 
