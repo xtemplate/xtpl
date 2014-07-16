@@ -4,6 +4,11 @@ title: xtpl overview
 ---
 {% raw %}
 
+## 版本
+
+nodejs: 0.17
+browser: http://g.tbcdn.cn/kissy/edge/2014.07.16/seed.js
+
 ## 基本 api
 
 ### Class
@@ -95,7 +100,7 @@ String render(data:Object, callback:Function) // 渲染数据，参数含义如�
 
 
 ```html
-<script src='http://g.tbcdn.cn/kissy/edge/2014.06.23/seed.js' 
+<script src='http://g.tbcdn.cn/kissy/edge/2014.07.16/seed.js' 
 
 data-config='{combine:true}'></script>
 ```
@@ -115,7 +120,7 @@ KISSY.use('xtemplate',function(S,XTemplate){
 
 
 ```
-npm install kissy@5.0.0-alpha.9 -g
+npm install kissy@5.0.0-alpha.10 -g
 kissy-xtemplate -p x/   // x/ 为模板文件目录，模板后缀为 xtpl
 ```
 
@@ -136,6 +141,12 @@ kissy-xtemplate -p x/   // x/ 为模板文件目录，模板后缀为 xtpl
         <td>String</td>
         <td></td>
         <td>directory of xtemplate files</td>
+    </tr>
+    <tr>
+        <td>-o</td>
+        <td>String</td>
+        <td></td>
+        <td>directory of generated template javascript files</td>
     </tr>
     <tr>
         <td>-s</td>
@@ -182,7 +193,27 @@ app.set("view engine", "xtpl");
 
 ### 基本类型
 
-支持 true false null undefined number string
+支持 true false null undefined number string map array
+
+### map
+值为基本类型
+
+```
+{{#with({
+  x:2
+})}}
+{{x}}  // => 2
+{{/with}}
+```
+
+### array
+元素项为基本类型
+
+```
+{{#each([1,2,4])}}
+{{this}}  // => 1 2 4
+{{/each}}
+```
 
 ### 转义
 
@@ -285,13 +316,15 @@ var x = [1, 2, 3];
 
 ### 比较操作
 
-支持 === !=== > >= < <=
+支持 if elseif else === !=== > >= < <=
 
 ```
 {{#if( x===1 )}}
 1
-{{else}}
+{{elseif (x===2)}}
 2
+{{else}}
+3
 {{/if}}
 
 {{#if ( (x+1) > 2 )}}
@@ -621,12 +654,6 @@ void get(name) // 获取当前作用域内数据值（包括附属数据）
 
 
 ## performance
-
-### node
-
-[xtpl jade ejs nunjucks handlebars dust](https://github.com/kissyteam/xtpl/tree/master/benchmark/result)
-
-### browser
 
 [xtpl jade ejs nunjucks handlebars dust](http://dev.kissyui.com/kissy/src/xtemplate/-/benchmark/)
 
