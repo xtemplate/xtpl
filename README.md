@@ -87,6 +87,8 @@ output
 http://dev.kissyui.com/kissy/src/xtemplate/-/tests/runner
 
 ## benchmark
+[xtpl jade ejs nunjucks handlebars dust](http://dev.kissyui.com/kissy/src/xtemplate/-/benchmark/)
+
 ```
 cd benchmark
 npm install
