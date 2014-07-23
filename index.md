@@ -472,7 +472,7 @@ xtpl.XTemplate.addCommand('xInline',function(scope, option){
 ```javascript
 var xtpl = require('xtpl');
 xtpl.XTemplate.addCommand('xInline',function(scope, option, buffer){
-  return buffer.write(option.params[0]+'1');
+  return buffer.write(option.params[0] + 1);
 });
 ```
 
@@ -505,7 +505,7 @@ var xtpl = require('xtpl');
 xtpl.XTemplate.addCommand('xInline',function(scope, option,buffer){
   buffer = buffer.async(function(newBuffer){
     setTimeout(function(){
-        newBuffer.write(option.params[0]+1).end();
+        newBuffer.write(option.params[0] + 1).end();
     },10);
   });
   return buffer;
