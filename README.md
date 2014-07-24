@@ -84,7 +84,11 @@ output
     </html>
 
 ## test
-http://dev.kissyui.com/kissy/src/xtemplate/-/tests/runner
+http://dev.kissyui.com/kissy/src/xtemplate/-/tests/coverage
+
+![xtemplate coverage info](http://gtms02.alicdn.com/tps/i2/TB1hMCKFVXXXXXFXVXXR0b5GXXX-1133-615.png)
+
+![xtemplate coverage info](http://gtms02.alicdn.com/tps/i2/TB1WxCNFVXXXXc_XpXXR0b5GXXX-1133-615.png)
 
 ## benchmark
 [xtpl jade ejs nunjucks handlebars dust](http://dev.kissyui.com/kissy/src/xtemplate/-/benchmark/)
