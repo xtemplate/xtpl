@@ -487,7 +487,7 @@ xtpl.XTemplate.addCommand('xInline',function(scope, option, buffer){
 ```javascript
 var xtpl = require('xtpl');
 xtpl.XTemplate.addCommand('xBlock',function(scope, option, buffer){
-  return option.fn(scope, buffer)+option.params[0];
+  return option.fn(scope, buffer).write(option.params[0]);
 });
 ```
 
