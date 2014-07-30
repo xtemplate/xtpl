@@ -121,17 +121,17 @@ KISSY.use('xtemplate',function(S,XTemplate){
 
 ### 预编译
 
-https://github.com/kissyteam/kissy-xtemplate
+[https://github.com/kissyteam/kissy-xtemplate](https://github.com/kissyteam/kissy-xtemplate)
 
 ```
 npm install kissy-xtemplate -g
 xtemplate  src/ dest/   // src/ 为模板文件目录，模板后缀为 xtpl
 ```
 
-
+例如 b.js 为 b.xtpl 预编译后生成的模块文件：
 
 ```javascript
-KISSY.use('xtemplate/runtime,a/b-xtpl',function(S,XTemplateRuntime,bXtpl){
+KISSY.use('xtemplate/runtime,a/b',function(S,XTemplateRuntime,bXtpl){
   new XTemplateRuntime(bXtpl).render({x:1},function(error,z){
     // z=>1
   });
