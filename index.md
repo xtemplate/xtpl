@@ -125,7 +125,7 @@ KISSY.use('xtemplate',function(S,XTemplate){
 
 ```
 npm install kissy-xtemplate -g
-xtemplate  src/ dest/   // src/ 为模板文件目录，模板后缀为 xtpl
+xtemplate  src/ dest/ -v 5.0.0-alpha.10   // src/ 为模板文件目录，模板后缀为 xtpl
 ```
 
 例如 b.js 为 b.xtpl 预编译后生成的模块文件：
