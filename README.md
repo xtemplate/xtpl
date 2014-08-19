@@ -1,6 +1,10 @@
 # xtpl
 
-
+[![xtpl](https://nodei.co/npm/xtpl.png)](https://npmjs.org/package/xtpl)
+[![NPM downloads](http://img.shields.io/npm/dm/xtpl.svg)](https://npmjs.org/package/xtpl)
+[![Build Status](https://secure.travis-ci.org/kissyteam/xtpl.png?branch=master)](https://travis-ci.org/kissyteam/xtpl)
+[![Coverage Status](https://coveralls.io/repos/kissyteam/xtpl/badge.png?branch=master)](https://coveralls.io/r/kissyteam/xtpl?branch=master)
+[![Dependency Status](https://gemnasium.com/kissyteam/xtpl.png)](https://gemnasium.com/kissyteam/xtpl)
 
 [http://kissyteam.github.io/xtpl/](http://kissyteam.github.io/xtpl/) a template engine based on kissy xtemplate(easier in express).
 
