@@ -4,7 +4,6 @@
  * @author yiminghe@gmail.com
  */
 
-var util = require('kissy/lib/util');
 var fs = require('fs');
 var Path = require('path');
 var iconv;
@@ -12,7 +11,7 @@ try {
     iconv = require('iconv-lite');
 } catch (e) {
 }
-var XTemplate = require('kissy/lib/xtemplate');
+var XTemplate = require('xtemplate');
 
 var globalConfig = {
     encoding: 'utf-8'
@@ -153,13 +152,22 @@ function renderFile(path, options, callback) {
     }
 }
 
+function mix(r, s) {
+    for (var p in s) {
+        if (!(p in r)) {
+            r[p] = s[p];
+        }
+    }
+    return r;
+}
+
 /**
  * load xtemplate from file on nodejs
  * @singleton
  */
 module.exports = {
     config: function (options) {
-        util.mix(globalConfig, options);
+        mix(globalConfig, options);
     },
 
     XTemplate: XTemplate,

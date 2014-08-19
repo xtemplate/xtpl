@@ -1,6 +1,6 @@
 {
     "name": "xtpl",
-    "version": "0.17.1",
+    "version": "0.17.2",
     "description": "a template engine based on kissy xtemplate",
     "author": "yiminghe <yiminghe@gmail.com>",
     "contributors": [
@@ -20,13 +20,22 @@
         "express"
     ],
     "license": "MIT",
+    "scripts": {
+        "test": "node ./node_modules/mocha/bin/mocha -R list tests/specs",
+        "cover": "node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha -- -R list tests/specs/"
+    },
     "bugs": {
         "url": "https://github.com/yiminghe/xtpl/issues"
     },
     "dependencies": {
-        "kissy": "5.0.0-alpha.11"
+        "xtemplate": "^1.0.1"
     },
     "devDependencies": {
-        "express": "~3.4.8"
+        "express": "~3.4.8",
+        "mocha": "~1.19.0",
+        "chai": "~1.9.1",
+        "istanbul": "~0.2.10",
+        "coveralls": "~2.10.0",
+        "mocha-istanbul": "~0.2.0"
     }
 }
