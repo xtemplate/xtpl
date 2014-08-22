@@ -1,18 +1,16 @@
 # xtpl
 
+xtemplate for nodejs(easier in express)
+
 [![xtpl](https://nodei.co/npm/xtpl.png)](https://npmjs.org/package/xtpl)
 [![NPM downloads](http://img.shields.io/npm/dm/xtpl.svg)](https://npmjs.org/package/xtpl)
 [![Build Status](https://secure.travis-ci.org/kissyteam/xtpl.png?branch=master)](https://travis-ci.org/kissyteam/xtpl)
 [![Coverage Status](https://coveralls.io/repos/kissyteam/xtpl/badge.png?branch=master)](https://coveralls.io/r/kissyteam/xtpl?branch=master)
 [![Dependency Status](https://gemnasium.com/kissyteam/xtpl.png)](https://gemnasium.com/kissyteam/xtpl)
 
-[http://kissyteam.github.io/xtpl/](http://kissyteam.github.io/xtpl/) a template engine based on kissy xtemplate(easier in express).
+## docs
 
-    app.set("view engine", "xtpl");
-
-and you can specify template file encoding(requires `iconv-lite`):
-
-    app.set("view encoding", "gbk");
+[http://kissyteam.github.io/xtpl/](http://kissyteam.github.io/xtpl/)
 
 ## layout
 
@@ -88,24 +86,12 @@ output
     </body>
     </html>
 
-## test
-http://dev.kissyui.com/kissy/src/xtemplate/-/tests/coverage
-
-![xtemplate coverage info](http://gtms02.alicdn.com/tps/i2/TB1hMCKFVXXXXXFXVXXR0b5GXXX-1133-615.png)
-
-![xtemplate coverage info](http://gtms02.alicdn.com/tps/i2/TB1WxCNFVXXXXc_XpXXR0b5GXXX-1133-615.png)
-
-## benchmark
-[xtpl jade ejs nunjucks handlebars dust](http://dev.kissyui.com/kissy/src/xtemplate/-/benchmark/)
-
-```
-cd benchmark
-npm install
-node index
-node defer
-```
 
 ## changelog
+
+### 1.0.0
+
+* use xtemplate 1.1.1: https://www.npmjs.org/package/xtemplate
 
 ### 0.17.0
 
