@@ -95,7 +95,125 @@ String render(data:Object, callback:Function) // 渲染数据，参数含义如�
     </tbody>
 </table>
 
+### Buffer api
 
+#### Methods
+
+
+```javascript
+Buffer write(data:String, escape:Boolean) // 写数据到缓冲区
+```
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">name</th>
+        <th style="width: 50px;">type</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>data</td>
+        <td>String</td>
+        <td>将要写到缓冲区的字符串</td>
+    </tr>
+    <tr>
+            <td>escape</td>
+            <td>Boolean</td>
+            <td>是否转义</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+```javascript
+Buffer async(fn:Function) // 产生新的异步缓冲区，新的缓冲区为 fn 回调函数的第一个参数
+
+Buffer end(data, escape) // 参数含义同 write 函数。 标志缓冲区数据填充完毕，用于通知异步缓冲区的结束。
+
+Buffer error(reason) // 触发 render 异步回调为失败。 reason 为回调的第一个参数.
+```
+
+### Scope api
+
+
+#### Members
+
+
+```javascript
+parent // 上级作用域
+
+root // 顶层作用域
+```
+
+#### Methods
+
+
+```javascript
+void setParent(scope: Scope) // 设置当前作用域的上级作用域
+
+void setData(data) // 设置当前作用域内数据
+
+var getData() // 获取当前作用域内数据
+
+void set(name, value) // 设置当前作用域内附属数据
+
+void get(name) // 获取当前作用域内数据值（包括附属数据）
+```
+
+### compiler api
+
+XTemplate.Compiler
+
+#### Methods
+
+#### compile
+```
+Object parse(content, name): 得到模板名字为 name 的模板内容 content 对应的编译后的函数
+```
+
+##### parser
+```
+Object parse(content, name): 得到模板名字为 name 的模板内容 content 对应的 ast 树
+```
+
+##### compileToStr
+```
+String compileToStr(param:Object): 得到编译后的函数字符串， param 包含
+```
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">name</th>
+        <th style="width: 50px;">type</th>
+        <th style="width: 50px;">default</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>name</td>
+        <td>String</td>
+        <td></td>
+        <td>模板名字</td>
+    </tr>
+    <tr>
+        <td>content</td>
+        <td>String</td>
+        <td></td>
+        <td>模板内容</td>
+    </tr>
+    <tr>
+        <td>isModule</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>是否用于模块</td>
+    </tr>
+    </tbody>
+</table>
 
 ## 浏览器端使用
 
@@ -531,74 +649,6 @@ KISSY.use('xtemplate/runtime, x-xtpl',function(S,XTemplate,x){
         }
     })...
 });
-```
-
-### Buffer api
-
-#### Methods
-
-
-```javascript
-Buffer write(data:String, escape:Boolean) // 写数据到缓冲区
-```
-
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th style="width: 100px;">name</th>
-        <th style="width: 50px;">type</th>
-        <th>description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>data</td>
-        <td>String</td>
-        <td>将要写到缓冲区的字符串</td>
-    </tr>
-    <tr>
-            <td>escape</td>
-            <td>Boolean</td>
-            <td>是否转义</td>
-        </tr>
-    </tbody>
-</table>
-
-
-
-```javascript
-Buffer async(fn:Function) // 产生新的异步缓冲区，新的缓冲区为 fn 回调函数的第一个参数
-
-Buffer end(data, escape) // 参数含义同 write 函数。 标志缓冲区数据填充完毕，用于通知异步缓冲区的结束。
-
-Buffer error(reason) // 触发 render 异步回调为失败。 reason 为回调的第一个参数.
-```
-
-### Scope api
-
-
-#### Members
-
-
-```javascript
-parent // 上级作用域
-
-root // 顶层作用域
-```
-
-#### Methods
-
-
-```javascript
-void setParent(scope: Scope) // 设置当前作用域的上级作用域
-
-void setData(data) // 设置当前作用域内数据
-
-var getData() // 获取当前作用域内数据
-
-void set(name, value) // 设置当前作用域内附属数据
-
-void get(name) // 获取当前作用域内数据值（包括附属数据）
 ```
 
 ## Reserved words
