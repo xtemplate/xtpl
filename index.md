@@ -174,7 +174,7 @@ XTemplate.Compiler
 Object parse(content, name): 得到模板名字为 name 的模板内容 content 对应的编译后的函数
 ```
 
-##### parser
+##### parse
 ```
 Object parse(content, name): 得到模板名字为 name 的模板内容 content 对应的 ast 树
 ```
