@@ -169,7 +169,7 @@ XTemplate.Compiler
 
 #### Methods
 
-#### compile
+##### compile
 ```
 Object parse(content, name): 得到模板名字为 name 的模板内容 content 对应的编译后的函数
 ```
@@ -181,9 +181,11 @@ Object parse(content, name): 得到模板名字为 name 的模板内容 content 
 
 ##### compileToStr
 ```
-String compileToStr(param:Object): 得到编译后的函数字符串， param 包含
+String compileToStr(param:Object): 得到编译后的函数字符串
 ```
 
+param 包含:
+ 
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
