@@ -1,6 +1,6 @@
 {
     "name": "xtpl",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "a template engine based on kissy xtemplate",
     "author": "yiminghe <yiminghe@gmail.com>",
     "contributors": [
@@ -28,7 +28,7 @@
         "url": "https://github.com/yiminghe/xtpl/issues"
     },
     "dependencies": {
-        "xtemplate": "1.1.1"
+        "xtemplate": "~1.2.2"
     },
     "devDependencies": {
         "express": "~3.4.8",

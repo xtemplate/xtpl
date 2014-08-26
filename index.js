@@ -11,10 +11,10 @@ try {
     iconv = require('iconv-lite');
 } catch (e) {
 }
-var XTemplate = require('xtemplate');
 
 var globalConfig = {
-    encoding: 'utf-8'
+    encoding: 'utf-8',
+    XTemplate: require('xtemplate')
 };
 var fileCache = {};
 var instanceCache = {};
@@ -128,7 +128,7 @@ function renderFile(path, options, callback) {
             loader: loader,
             cache: options.cache
         };
-        encoding = config.encoding = encoding || globalConfig.encoding;
+        encoding = config.encoding = encoding || globalConfig.inEncoding || globalConfig.encoding;
         getInstance(path, config, function (error, engine) {
             if (error) {
                 callback(error);
@@ -139,10 +139,11 @@ function renderFile(path, options, callback) {
                         callback(e);
                         return;
                     }
-                    if (Buffer.isEncoding(encoding)) {
+                    var outEncoding = globalConfig.outEncoding || globalConfig.encoding;
+                    if (Buffer.isEncoding(outEncoding)) {
                         callback(e, content);
                     } else {
-                        callback(e, iconv.encode(content, encoding));
+                        callback(e, iconv.encode(content, outEncoding));
                     }
                 });
             }

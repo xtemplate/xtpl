@@ -1,6 +1,6 @@
 # xtpl
 
-xtemplate for nodejs(easier in express)
+xtemplate for nodejs (easier in express)
 
 [![xtpl](https://nodei.co/npm/xtpl.png)](https://npmjs.org/package/xtpl)
 [![NPM downloads](http://img.shields.io/npm/dm/xtpl.svg)](https://npmjs.org/package/xtpl)
@@ -10,12 +10,141 @@ xtemplate for nodejs(easier in express)
 
 ## docs
 
-[http://kissyteam.github.io/xtpl/](http://kissyteam.github.io/xtpl/)
+### syntax
 
-## layout
+refer: https://github.com/kissyteam/xtemplate
 
-    {{extend ("./layout")}}
+### api
 
+#### methods
+
+##### config xtpl global option:
+```javascript
+void config(option:Object)
+```
+
+option details:
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">name</th>
+        <th style="width: 50px;">type</th>
+        <th style="width: 50px;">default</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>encoding</td>
+          <td>String</td>
+          <td>utf-8</td>
+          <td>encoding for inEncoding and outEncoding</td>
+      </tr>
+      <tr>
+          <td>inEncoding</td>
+          <td>String</td>
+          <td>utf-8</td>
+          <td>encoding for read xtpl files</td>
+      </tr>
+      <tr>
+          <td>outEncoding</td>
+          <td>String</td>
+          <td>utf-8</td>
+          <td>encoding for convert rendered content into buffer</td>
+      </tr>
+      <tr>
+          <td>XTemplate</td>
+          <td>Object</td>
+          <td></td>
+          <td>xtemplate module value</td>
+      </tr>
+    </tbody>
+</table>
+
+##### render file
+```javascript
+void renderFile(path:String, options:Object, callback:function)
+```
+parameter details:
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th style="width: 100px;">name</th>
+        <th style="width: 50px;">type</th>
+        <th style="width: 50px;">default</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>path</td>
+          <td>String</td>
+          <td></td>
+          <td>xtpl template file</td>
+      </tr>
+      <tr>
+          <td>option</td>
+          <td>Object</td>
+          <td></td>
+          <td>
+          data to be rendered. the following properties will be used for control.
+          <table class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                  <th style="width: 100px;">name</th>
+                  <th style="width: 50px;">type</th>
+                  <th style="width: 50px;">default</th>
+                  <th>description</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>cache</td>
+                    <td>Boolean</td>
+                    <td>false</td>
+                    <td>whether cache xtpl by path</td>
+                </tr>
+                <tr>
+                    <td>setting['view encoding']</td>
+                    <td>String</td>
+                    <td>global encoding</td>
+                    <td>encoding for read xtpl files</td>
+                </tr>
+              </tbody>
+          </table>
+          </td>
+      </tr>
+      <tr>
+          <td>callback</td>
+          <td>function</td>
+          <td></td>
+          <td>callback</td>
+      </tr>
+    </tbody>
+</table>
+
+```javascript
+var xtpl = require('xtpl');
+xtpl.renderFile('./x.xtpl',{
+	x:1
+},function(error,content){
+
+});
+```
+
+##### express adaptor
+
+```javascript
+xtpl.__express = xtpl.renderFile
+```
+
+##### clear cache
+
+clear xtemplate cache cached by xtpl file path
+
+```javascript
+void clearCache(path:String);
+```
 
 ## Example
 
@@ -42,7 +171,7 @@ index.xtpl
     {{/block}}
 
 layout1.xtpl
-    
+
     <!doctype html>
     <html>
     <head>
@@ -56,10 +185,10 @@ layout1.xtpl
     {{{include ("./footer")}}}
     </body>
     </html>
-    
- 
+
+
 render
- 
+
     res.render("index", {title: "xtpl engine!"})
 
 output
@@ -77,7 +206,7 @@ output
     <body>
     <h1>header</h1>
     <h2>sub header</h2>
-    
+
     <!--index body block-->
     <h2>xtpl engine!</h2>
 
@@ -89,18 +218,24 @@ output
 
 ## changelog
 
+### 1.1.0
+
+* support global inEncoding for read xtpl file and outEncoding for convert rendered content into buffer
+* support specify xtemplate module
+
+
 ### 1.0.0
 
 * use xtemplate 1.1.1: https://www.npmjs.org/package/xtemplate
 
 ### 0.17.0
 
-* 支持 map array 类型: https://github.com/kissyteam/kissy/issues/614
-* 支持 elseif: https://github.com/kissyteam/kissy/issues/664
+* support map array: https://github.com/kissyteam/kissy/issues/614
+* support elseif: https://github.com/kissyteam/kissy/issues/664
 
 ### 0.16.0
 
-* 同步读取文件，防止并发打开文件数过多
+* read file synchronously
 
 ### 0.12.1
 
@@ -126,7 +261,7 @@ output
 
 ### 0.8.0
 
-* 相对于 [kissy 1.4.2 xtemplate](http://docs.kissyui.com/1.4/docs/html/demo/xtemplate/index.html) 语法增强修改：https://github.com/kissyteam/kissy/issues/570
+* change syntax：https://github.com/kissyteam/kissy/issues/570
 * 支持异步命令：https://github.com/kissyteam/kissy/issues/587
 * 修复 {{1}}} 渲染问题：https://github.com/kissyteam/kissy/issues/596
 * 支持模型内命令带参数调用：https://github.com/kissyteam/kissy/issues/616
