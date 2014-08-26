@@ -18,9 +18,9 @@ refer: https://github.com/kissyteam/xtemplate
 
 #### methods
 
-##### config xtpl global option:
+##### config or get xtpl global option:
 ```javascript
-void config(option:Object)
+Object config(option:Object)
 ```
 
 option details:
@@ -60,6 +60,8 @@ option details:
       </tr>
     </tbody>
 </table>
+
+if options is undefined, then this method will return global config.
 
 ##### render file
 ```javascript
@@ -218,11 +220,11 @@ output
 
 ## changelog
 
-### 1.1.0
+### 1.1.2
 
 * support global inEncoding for read xtpl file and outEncoding for convert rendered content into buffer
 * support specify xtemplate module
-
+* support get global config through xtpl.config()
 
 ### 1.0.0
 

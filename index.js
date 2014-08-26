@@ -168,7 +168,11 @@ function mix(r, s) {
  */
 module.exports = {
     config: function (options) {
-        mix(globalConfig, options);
+        if (!options) {
+            return globalConfig;
+        } else {
+            mix(globalConfig, options);
+        }
     },
 
     XTemplate: globalConfig.XTemplate,
