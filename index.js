@@ -38,7 +38,7 @@ function getTplFn(path, config, callback) {
         } else {
             var fn;
             try {
-                fn = XTemplate.compile(tpl, path);
+                fn = globalConfig.XTemplate.compile(tpl, path);
             } catch (e) {
                 callback(e);
                 return;
@@ -60,7 +60,7 @@ function getInstance(path, config, callback) {
         if (error) {
             callback(error);
         } else {
-            var instance = new XTemplate(tpl, config);
+            var instance = new globalConfig.XTemplate(tpl, config);
             if (cache) {
                 instanceCache[path] = instance;
             }
@@ -171,7 +171,7 @@ module.exports = {
         mix(globalConfig, options);
     },
 
-    XTemplate: XTemplate,
+    XTemplate: globalConfig.XTemplate,
 
     __express: renderFile,
 
