@@ -155,9 +155,7 @@ function renderFile(path, options, callback) {
 
 function mix(r, s) {
     for (var p in s) {
-        if (!(p in r)) {
-            r[p] = s[p];
-        }
+        r[p] = s[p];
     }
     return r;
 }
