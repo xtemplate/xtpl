@@ -1,41 +1,35 @@
 {
-    "name": "xtpl",
-    "version": "1.1.3",
-    "description": "a template engine based on kissy xtemplate",
-    "author": "yiminghe <yiminghe@gmail.com>",
-    "contributors": [
-        "4simple <wondger@qq.com>"
-    ],
-    "scripts": {
-        "test": "node test"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/yiminghe/xtpl"
-    },
-    "keywords": [
-        "xtpl",
-        "kissy",
-        "kissy-xtemplate",
-        "express"
-    ],
-    "license": "MIT",
-    "scripts": {
-        "test": "node ./node_modules/mocha/bin/mocha -R list tests/specs",
-        "cover": "node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha -- -R list tests/specs/"
-    },
-    "bugs": {
-        "url": "https://github.com/yiminghe/xtpl/issues"
-    },
-    "dependencies": {
-        "xtemplate": "~1.2.2"
-    },
-    "devDependencies": {
-        "express": "~3.4.8",
-        "mocha": "~1.19.0",
-        "chai": "~1.9.1",
-        "istanbul": "~0.2.10",
-        "coveralls": "~2.10.0",
-        "mocha-istanbul": "~0.2.0"
-    }
+  "name": "xtpl",
+  "version": "2.0.0",
+  "description": "nodejs wrapper around xtemplate engine",
+  "author": "yiminghe <yiminghe@gmail.com>",
+  "contributors": [
+    "4simple <wondger@qq.com>"
+  ],
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha -R list tests/specs",
+    "cover": "node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha -- -R list tests/specs/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kissyteam/xtpl"
+  },
+  "keywords": [
+    "xtpl",
+    "xtemplate",
+    "express"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kissyteam/xtpl/issues"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "coveralls": "~2.10.0",
+    "express": "~3.4.8",
+    "istanbul": "~0.2.10",
+    "mocha": "~1.19.0",
+    "mocha-istanbul": "~0.2.0",
+    "xtemplate": "^1.2.4"
+  }
 }

@@ -1,4 +1,7 @@
 var xtpl = require('../../');
+xtpl.config({
+    XTemplate: require('xtemplate')
+});
 var path = require('path');
 var expect = require('chai').expect;
 describe('xtpl', function () {

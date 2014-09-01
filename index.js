@@ -13,8 +13,7 @@ try {
 }
 
 var globalConfig = {
-    encoding: 'utf-8',
-    XTemplate: require('xtemplate')
+    encoding: 'utf-8'
 };
 var fileCache = {};
 var instanceCache = {};
@@ -172,8 +171,6 @@ module.exports = {
             mix(globalConfig, options);
         }
     },
-
-    XTemplate: globalConfig.XTemplate,
 
     __express: renderFile,
 
