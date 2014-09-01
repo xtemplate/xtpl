@@ -1,6 +1,6 @@
 # xtpl
 
-xtemplate for nodejs (easier in express)
+nodejs wrapper around xtemplate engine (easier in express)
 
 [![xtpl](https://nodei.co/npm/xtpl.png)](https://npmjs.org/package/xtpl)
 [![NPM downloads](http://img.shields.io/npm/dm/xtpl.svg)](https://npmjs.org/package/xtpl)
@@ -127,6 +127,9 @@ parameter details:
 
 ```javascript
 var xtpl = require('xtpl');
+xtpl.config({
+    XTemplate: require('xtemplate');
+});
 xtpl.renderFile('./x.xtpl',{
 	x:1
 },function(error,content){
