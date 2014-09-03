@@ -6,14 +6,19 @@
 
 var fs = require('fs');
 var Path = require('path');
-var iconv;
+var iconv, XTemplate;
 try {
     iconv = require('iconv-lite');
 } catch (e) {
 }
-
+try {
+    XTemplate = require('xtemplate');
+} catch (e) {
+    console.error('xtpl depends on xtemplate, please install xtemplate first');
+}
 var globalConfig = {
-    encoding: 'utf-8'
+    encoding: 'utf-8',
+    XTemplate: XTemplate
 };
 var fileCache = {};
 var instanceCache = {};
@@ -183,3 +188,10 @@ module.exports = {
     }
 };
 
+Object.defineProperties(module.exports, {
+    XTemplate: {
+        get: function () {
+            return globalConfig.XTemplate;
+        }
+    }
+});

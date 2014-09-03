@@ -1,12 +1,13 @@
 var xtpl = require('../../');
-xtpl.config({
-    XTemplate: require('xtemplate')
-});
 var path = require('path');
 var expect = require('chai').expect;
 describe('xtpl', function () {
+    it('can get XTemplate engine', function () {
+        expect(xtpl.XTemplate).not.to.equal(undefined);
+    });
+
     it('works on node', function (done) {
-        xtpl.renderFile(path.resolve(__dirname,'../fixture/main.xtpl'), {
+        xtpl.renderFile(path.resolve(__dirname, '../fixture/main.xtpl'), {
             y: '<',
             x: '>'
         }, function (err, data) {
