@@ -18,5 +18,3 @@ Thumbs.db
 *.swp
 out/
 node_modules/
-tmp/
-reports/

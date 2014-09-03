@@ -1,11 +1,5 @@
 coverage/
-src/
-build/
-tools/
-docs/
 node_modules/
-reports/
-bin/tests/
 nohup.out
 *.iml
 .idea/
