@@ -1,6 +1,6 @@
 {
   "name": "xtpl",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "nodejs wrapper around xtemplate engine",
   "author": "yiminghe <yiminghe@gmail.com>",
   "contributors": [

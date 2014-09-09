@@ -31,6 +31,19 @@ function normalizeSlash(path) {
     return path;
 }
 
+function compile(tpl, path) {
+    var fn, error;
+    try {
+        fn = globalConfig.XTemplate.compile(tpl, path);
+    } catch (e) {
+        error = e;
+    }
+    return {
+        fn: fn,
+        error: error
+    };
+}
+
 function getTplFn(path, config, callback) {
     var cache = config.cache;
     if (cache && fnCache[path]) {
@@ -41,10 +54,10 @@ function getTplFn(path, config, callback) {
             callback(error);
         } else {
             var fn;
-            try {
-                fn = globalConfig.XTemplate.compile(tpl, path);
-            } catch (e) {
-                callback(e);
+            var ret = compile(tpl, path);
+            fn = ret.fn;
+            if (ret.error) {
+                callback(ret.error);
                 return;
             }
             if (cache) {
@@ -73,6 +86,19 @@ function getInstance(path, config, callback) {
     });
 }
 
+function readFileSync(path) {
+    var content, error;
+    try {
+        content = fs.readFileSync(path);
+    } catch (e) {
+        error = e;
+    }
+    return {
+        content: content,
+        error: error
+    };
+}
+
 function readFile(path, config, callback) {
     var cache = config.cache;
     var encoding = config.encoding;
@@ -80,11 +106,9 @@ function readFile(path, config, callback) {
         return callback(null, fileCache[path]);
     }
     var content, error;
-    try {
-        content = fs.readFileSync(path);
-    } catch (e) {
-        error = e;
-    }
+    var ret = readFileSync(path);
+    content = ret.content;
+    error = ret.error;
     if (content) {
         if (Buffer.isEncoding(encoding)) {
             content = content.toString(encoding);
@@ -126,35 +150,31 @@ function renderFile(path, options, callback) {
     }
     path = normalizeSlash(path);
     var encoding = options.settings && options.settings['view encoding'];
-    try {
-        var config = {
-            name: path,
-            loader: loader,
-            cache: options.cache
-        };
-        encoding = config.encoding = encoding || globalConfig.inEncoding || globalConfig.encoding;
-        getInstance(path, config, function (error, engine) {
-            if (error) {
-                callback(error);
-            } else {
-                // runtime commands
-                engine.render(options, {commands: options.commands}, function (e, content) {
-                    if (e) {
-                        callback(e);
-                        return;
-                    }
-                    var outEncoding = globalConfig.outEncoding || globalConfig.encoding;
-                    if (Buffer.isEncoding(outEncoding)) {
-                        callback(e, content);
-                    } else {
-                        callback(e, iconv.encode(content, outEncoding));
-                    }
-                });
-            }
-        });
-    } catch (e) {
-        callback(e);
-    }
+    var config = {
+        name: path,
+        loader: loader,
+        cache: options.cache
+    };
+    encoding = config.encoding = encoding || globalConfig.inEncoding || globalConfig.encoding;
+    getInstance(path, config, function (error, engine) {
+        if (error) {
+            callback(error);
+        } else {
+            // runtime commands
+            engine.render(options, {commands: options.commands}, function (e, content) {
+                if (e) {
+                    callback(e);
+                    return;
+                }
+                var outEncoding = globalConfig.outEncoding || globalConfig.encoding;
+                if (Buffer.isEncoding(outEncoding)) {
+                    callback(e, content);
+                } else {
+                    callback(e, iconv.encode(content, outEncoding));
+                }
+            });
+        }
+    });
 }
 
 function mix(r, s) {
