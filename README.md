@@ -1,6 +1,6 @@
 # xtpl
 
-nodejs wrapper around xtemplate engine (easier in express)
+nodejs wrapper around xtemplate engine (easier in expressjs and koajs)
 
 [![xtpl](https://nodei.co/npm/xtpl.png)](https://npmjs.org/package/xtpl)
 [![NPM downloads](http://img.shields.io/npm/dm/xtpl.svg)](https://npmjs.org/package/xtpl)
@@ -149,6 +149,22 @@ clear xtemplate cache cached by xtpl file path
 
 ```javascript
 void clearCache(path:String);
+```
+
+### use for expressjs
+
+```javascript
+var app = require('express')();
+app.set('view','./views');
+app.set('view engine', 'xtpl');
+```
+
+### use for koa
+
+```javascript
+var app = require('xtpl/lib/koa')(require('koa')(),{
+    view:'./views'
+});
 ```
 
 ## Example
