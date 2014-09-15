@@ -1,6 +1,6 @@
 # xtpl
 
-nodejs wrapper around xtemplate engine (easier in expressjs and koajs)
+nodejs wrapper around xtemplate engine (easier for expressjs and koajs)
 
 [![xtpl](https://nodei.co/npm/xtpl.png)](https://npmjs.org/package/xtpl)
 [![NPM downloads](http://img.shields.io/npm/dm/xtpl.svg)](https://npmjs.org/package/xtpl)
@@ -157,6 +157,9 @@ void clearCache(path:String);
 var app = require('express')();
 app.set('view','./views');
 app.set('view engine', 'xtpl');
+app.use(function(req, res){
+    res.render('test',{data:1});
+});
 ```
 
 ### use for koa
@@ -164,6 +167,9 @@ app.set('view engine', 'xtpl');
 ```javascript
 var app = require('xtpl/lib/koa')(require('koa')(),{
     view:'./views'
+});
+app.use(function*(){
+    yield this.render('test',{data:1});
 });
 ```
 
