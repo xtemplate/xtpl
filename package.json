@@ -35,6 +35,6 @@
     "mocha": "~1.19.0",
     "mocha-istanbul": "~0.2.0",
     "request": "^2.42.0",
-    "xtemplate": "^1.2.4"
+    "xtemplate": "^1.4.1"
   }
 }
