@@ -1,11 +1,18 @@
 var xtpl = require('../../');
 var path = require('path');
 var xtplKoa = require('../../lib/koa');
-var expect = require('chai').expect;
+var expect = require('expect.js');
+
+function normalizeSlash(path) {
+    if (path.indexOf('\\') !== -1) {
+        path = path.replace(/\\/g, '/');
+    }
+    return path;
+}
 
 describe('xtpl', function () {
     it('can get XTemplate engine', function () {
-        expect(xtpl.XTemplate).not.to.equal(undefined);
+        expect(xtpl.XTemplate).not.to.be(undefined);
     });
 
     it('works on node', function (done) {
@@ -13,9 +20,39 @@ describe('xtpl', function () {
             y: '<',
             x: '>'
         }, function (err, data) {
-            expect(err).to.equal(null);
-            expect(data).to.equal('<&gt;');
+            expect(err).to.be(null);
+            expect(data).to.be('<&gt;');
             done();
+        });
+    });
+
+    it('works on node when cached', function (done) {
+        var tplPath = normalizeSlash(path.resolve(__dirname, '../fixture/main.xtpl'));
+        var count = 0;
+        expect(xtpl.getCache(tplPath).instance).not.to.be.ok();
+        xtpl.renderFile(tplPath, {
+            y: '<',
+            x: '>',
+            cache: 1
+        }, function (err, data) {
+            expect(err).to.be(null);
+            expect(data).to.be('<&gt;');
+            if (++count === 2) {
+                done();
+            }
+        });
+        //console.log(xtpl.getCaches());
+        expect(xtpl.getCache(tplPath).instance.config.name).to.be(tplPath);
+        xtpl.renderFile(tplPath, {
+            y: '<',
+            x: '>',
+            cache: 1
+        }, function (err, data) {
+            expect(err).to.be(null);
+            expect(data).to.be('<&gt;');
+            if (++count === 2) {
+                done();
+            }
         });
     });
 
@@ -28,13 +65,13 @@ describe('xtpl', function () {
                 y: '<',
                 x: '>'
             });
-            expect(html).to.equal('<&gt;');
+            expect(html).to.be('<&gt;');
         });
         app.listen(9000);
         var request = require('request');
         setTimeout(function () {
             request({url: 'http://localhost:9000'}, function (error, response, body) {
-                expect(body).to.equal('<&gt;');
+                expect(body).to.be('<&gt;');
                 done();
             });
         }, 100);
