@@ -1,6 +1,6 @@
 # xtpl
 
-nodejs wrapper around xtemplate engine (easier for expressjs and koajs)
+nodejs wrapper around [xtemplate](https://github.com/kissyteam/xtemplate) engine (easier for expressjs and koajs)
 
 [![xtpl](https://nodei.co/npm/xtpl.png)](https://npmjs.org/package/xtpl)
 [![NPM downloads](http://img.shields.io/npm/dm/xtpl.svg)](https://npmjs.org/package/xtpl)
@@ -156,7 +156,7 @@ void clearCache(path:String);
 
 ```javascript
 var app = require('express')();
-app.set('view','./views');
+app.set('views','./views');
 app.set('view engine', 'xtpl');
 app.use(function(req, res){
     res.render('test',{data:1});
@@ -247,3 +247,7 @@ output
 ## changelog
 
 https://github.com/kissyteam/xtpl/milestones
+
+## License
+
+xtpl is released under the MIT license.
