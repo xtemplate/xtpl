@@ -38,19 +38,7 @@ option details:
           <td>encoding</td>
           <td>String</td>
           <td>utf-8</td>
-          <td>encoding for inEncoding and outEncoding</td>
-      </tr>
-      <tr>
-          <td>inEncoding</td>
-          <td>String</td>
-          <td>utf-8</td>
-          <td>encoding for read xtpl files</td>
-      </tr>
-      <tr>
-          <td>outEncoding</td>
-          <td>String</td>
-          <td>utf-8</td>
-          <td>encoding for convert rendered content into buffer</td>
+          <td>xtpl file encoding</td>
       </tr>
       <tr>
           <td>XTemplate</td>
