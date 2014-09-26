@@ -55,7 +55,7 @@ option details:
       <tr>
           <td>XTemplate</td>
           <td>Object</td>
-          <td></td>
+          <td>require('xtemplate')</td>
           <td>xtemplate module value</td>
       </tr>
     </tbody>
@@ -125,11 +125,12 @@ parameter details:
     </tbody>
 </table>
 
+```
+npm install xtpl xtemplate --save
+```
+
 ```javascript
 var xtpl = require('xtpl');
-xtpl.config({
-    XTemplate: require('xtemplate');
-});
 xtpl.renderFile('./x.xtpl',{
 	x:1
 },function(error,content){
@@ -166,7 +167,7 @@ app.use(function(req, res){
 
 ```javascript
 var app = require('xtpl/lib/koa')(require('koa')(),{
-    view:'./views'
+    views:'./views'
 });
 app.use(function*(){
     yield this.render('test',{data:1});
