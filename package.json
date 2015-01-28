@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kissyteam/xtpl"
+    "url": "https://github.com/xtemplate/xtpl"
   },
   "keywords": [
     "xtpl",
@@ -24,7 +24,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kissyteam/xtpl/issues"
+    "url": "https://github.com/xtemplate/xtpl/issues"
   },
   "devDependencies": {
     "coveralls": "~2.10.0",

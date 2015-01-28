@@ -1,18 +1,18 @@
 # xtpl
 
-nodejs wrapper around [xtemplate](https://github.com/kissyteam/xtemplate) engine (easier for expressjs and koajs)
+nodejs wrapper around [xtemplate](https://github.com/xtemplate/xtemplate) engine (easier for expressjs and koajs)
 
 [![xtpl](https://nodei.co/npm/xtpl.png)](https://npmjs.org/package/xtpl)
 [![NPM downloads](http://img.shields.io/npm/dm/xtpl.svg)](https://npmjs.org/package/xtpl)
-[![Build Status](https://secure.travis-ci.org/kissyteam/xtpl.png?branch=master)](https://travis-ci.org/kissyteam/xtpl)
-[![Coverage Status](https://coveralls.io/repos/kissyteam/xtpl/badge.png?branch=master)](https://coveralls.io/r/kissyteam/xtpl?branch=master)
-[![Dependency Status](https://gemnasium.com/kissyteam/xtpl.png)](https://gemnasium.com/kissyteam/xtpl)
+[![Build Status](https://secure.travis-ci.org/xtemplate/xtpl.png?branch=master)](https://travis-ci.org/xtemplate/xtpl)
+[![Coverage Status](https://coveralls.io/repos/xtemplate/xtpl/badge.png?branch=master)](https://coveralls.io/r/xtemplate/xtpl?branch=master)
+[![Dependency Status](https://gemnasium.com/xtemplate/xtpl.png)](https://gemnasium.com/xtemplate/xtpl)
 
 ## docs
 
 ### syntax
 
-refer: https://github.com/kissyteam/xtemplate
+refer: https://github.com/xtemplate/xtemplate
 
 ### api
 
@@ -234,7 +234,7 @@ output
 
 ## changelog
 
-https://github.com/kissyteam/xtpl/milestones
+https://github.com/xtemplate/xtpl/milestones
 
 ## License
 
