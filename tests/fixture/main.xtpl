@@ -1,1 +1,1 @@
-{{{y}}}{{include('./part.xtpl')}}
+{{{y}}}{{include('./part.xtpl')}}{{name}}{{age}}
