@@ -61,17 +61,23 @@ describe('xtpl', function () {
             views: path.resolve(__dirname, '../fixture/')
         });
         app.use(function *() {
+
+            // test for ctx.state
+            this.state.name = 'foo';
+            this.state.age = 18;
+
             var html = yield* this.render('main', {
                 y: '<',
-                x: '>'
+                x: '>',
+                age: 20
             });
-            expect(html).to.be('<&gt;');
+            expect(html).to.be('<&gt;foo20');
         });
-        app.listen(9000);
+        app.listen(4001);
         var request = require('request');
         setTimeout(function () {
-            request({url: 'http://localhost:9000'}, function (error, response, body) {
-                expect(body).to.be('<&gt;');
+            request({url: 'http://localhost:4001'}, function (error, response, body) {
+                expect(body).to.be('<&gt;foo20');
                 done();
             });
         }, 100);
