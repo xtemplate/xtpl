@@ -34,7 +34,7 @@
     "koa": "^0.21.0",
     "mocha": "~1.19.0",
     "mocha-istanbul": "~0.2.0",
-    "request": "^2.42.0",
+    "supertest": "^1.2.0",
     "xtemplate": "^3.1.0"
   }
 }

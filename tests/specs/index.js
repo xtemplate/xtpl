@@ -2,6 +2,7 @@ var xtpl = require('../../');
 var path = require('path');
 var xtplKoa = require('../../lib/koa');
 var expect = require('expect.js');
+var request = require('supertest')
 
 function normalizeSlash(path) {
     if (path.indexOf('\\') !== -1) {
@@ -73,13 +74,9 @@ describe('xtpl', function () {
             });
             expect(html).to.be('<&gt;foo20');
         });
-        app.listen(4001);
-        var request = require('request');
-        setTimeout(function () {
-            request({url: 'http://localhost:4001'}, function (error, response, body) {
-                expect(body).to.be('<&gt;foo20');
-                done();
-            });
-        }, 100);
+        request(app.listen())
+          .get('/')
+          .expect(200)
+          .expect('<&gt;foo20', done)
     });
 });
