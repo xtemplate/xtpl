@@ -79,4 +79,23 @@ describe('xtpl', function () {
           .expect(200)
           .expect('<&gt;foo20', done);
     });
+
+    it('works for koa and absolute path', function (done) {
+        var app = xtplKoa(require('koa')());
+        app.use(function *() {
+            this.state.name = 'foo';
+            this.state.age = 18;
+
+            var html = yield* this.render(path.resolve(__dirname, '../fixture/main.xtpl'), {
+                y: '<',
+                x: '>',
+                age: 20
+            });
+            expect(html).to.be('<&gt;foo20');
+        });
+        request(app.listen())
+          .get('/')
+          .expect(200)
+          .expect('<&gt;foo20', done);
+    });
 });
