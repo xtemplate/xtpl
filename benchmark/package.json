@@ -1,6 +1,6 @@
 {
   "name": "xtpl-benchmark",
-  "dependencies": {
+  "devDendencies": {
     "benchmark": "^1.0.0",
     "consolidate": "^0.10.0",
     "dustjs-linkedin": "^2.4.0",
