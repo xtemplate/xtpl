@@ -162,6 +162,17 @@ app.use(function*(){
 });
 ```
 
+### use for koa2
+
+```javascript
+var app = require('xtpl/lib/koa')(require('koa')(),{
+    views:'./views'
+});
+app.use( async (ctx, next){
+    ctx.body = await ctx.render('test',{data: 1});   //需要把渲染完的字符串传给body
+});
+```
+
 ## Example
 
     ├── footer.xtpl
