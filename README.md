@@ -162,6 +162,20 @@ app.use(function*(){
 });
 ```
 
+### use for koa2
+
+```javascript
+const koa = require('koa'),
+    app = new koa()
+const xtpl = require('xtpl/lib/koa2')
+    xtpl(app, {
+        views:'./views'
+    });
+app.use(async (ctx, next) => {
+    ctx.body = await ctx.render('test',{data:1});
+});
+```
+
 ## Example
 
     ├── footer.xtpl
