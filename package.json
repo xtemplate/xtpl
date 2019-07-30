@@ -1,6 +1,6 @@
 {
   "name": "xtpl",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "nodejs wrapper around xtemplate engine",
   "author": "yiminghe <yiminghe@gmail.com>",
   "contributors": [
@@ -39,7 +39,7 @@
     "mocha": "~2.5.3",
     "mocha-istanbul": "~0.2.0",
     "request": "^2.72.0",
-    "xtemplate": "^4.5.1",
+    "xtemplate": "5.x",
     "supertest": "~1.2.0"
   }
 }
