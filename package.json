@@ -1,6 +1,6 @@
 {
   "name": "xtpl",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "nodejs wrapper around xtemplate engine",
   "author": "yiminghe <yiminghe@gmail.com>",
   "contributors": [
@@ -14,6 +14,7 @@
     "node": ">=0.10"
   },
   "scripts": {
+    "pub":"git push && npm publish",
     "test": "node --harmony ./node_modules/mocha/bin/mocha --harmony -R list tests/specs",
     "cover": "node --harmony ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha -- -R list tests/specs/"
   },
@@ -35,11 +36,11 @@
     "expect.js": "^0.3.1",
     "express": "~3.4.8",
     "istanbul": "~0.4.3",
-    "koa": "^1.2.0",
+    "koa": "^2.7.0",
     "mocha": "~2.5.3",
     "mocha-istanbul": "~0.2.0",
     "request": "^2.72.0",
-    "xtemplate": "5.x",
-    "supertest": "~1.2.0"
+    "supertest": "~1.2.0",
+    "xtemplate": "5.x"
   }
 }

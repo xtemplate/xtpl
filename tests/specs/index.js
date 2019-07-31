@@ -1,8 +1,9 @@
 var xtpl = require('../../');
 var path = require('path');
-var xtplKoa = require('../../lib/koa');
+var xtplKoa = require('../../lib/koa2');
 var expect = require('expect.js');
 var request = require('supertest');
+var Koa=require('koa');
 
 function normalizeSlash(path) {
     if (path.indexOf('\\') !== -1) {
@@ -58,16 +59,16 @@ describe('xtpl', function () {
     });
 
     it('works for koa', function (done) {
-        var app = xtplKoa(require('koa')(), {
+        var app = xtplKoa(new Koa(), {
             views: path.resolve(__dirname, '../fixture/')
         });
-        app.use(function *() {
+        app.use(async function (ctx) {
 
             // test for ctx.state
-            this.state.name = 'foo';
-            this.state.age = 18;
+            ctx.state.name = 'foo';
+            ctx.state.age = 18;
 
-            var html = yield* this.render('main', {
+            var html = await ctx.render('main', {
                 y: '<',
                 x: '>',
                 age: 20
@@ -81,12 +82,12 @@ describe('xtpl', function () {
     });
 
     it('works for koa and absolute path', function (done) {
-        var app = xtplKoa(require('koa')());
-        app.use(function *() {
-            this.state.name = 'foo';
-            this.state.age = 18;
+        var app = xtplKoa(new Koa());
+        app.use(async function (ctx) {
+            ctx.state.name = 'foo';
+            ctx.state.age = 18;
 
-            var html = yield* this.render(path.resolve(__dirname, '../fixture/main.xtpl'), {
+            var html = await ctx.render(path.resolve(__dirname, '../fixture/main.xtpl'), {
                 y: '<',
                 x: '>',
                 age: 20

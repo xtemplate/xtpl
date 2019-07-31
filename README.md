@@ -154,27 +154,14 @@ app.use(function(req, res){
 ### use for koa
 
 ```javascript
-var app = require('xtpl/lib/koa')(require('koa')(),{
+var app = require('xtpl/lib/koa2')(new require('koa')(),{
     views:'./views'
 });
-app.use(function*(){
-    yield this.render('test',{data:1});
+app.use(async function(ctx){
+    await ctx.render('test',{data:1});
 });
 ```
 
-### use for koa2
-
-```javascript
-const koa = require('koa'),
-    app = new koa()
-const xtpl = require('xtpl/lib/koa2')
-    xtpl(app, {
-        views:'./views'
-    });
-app.use(async (ctx, next) => {
-    ctx.body = await ctx.render('test',{data:1});
-});
-```
 
 ## Example
 
