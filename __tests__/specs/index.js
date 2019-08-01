@@ -23,7 +23,6 @@ describe('xtpl', function () {
         }, function (err, data) {
             expect(err).toBe(null);
             expect(data).toBe('<&gt;');
-            console.log('oooo')
             done();
         });
     });
@@ -31,7 +30,6 @@ describe('xtpl', function () {
     it('works on node when cached', function (done) {
         function check(){
             if (++count === 2) {
-                console.log('check');
                 done();
             }
         }
@@ -78,15 +76,10 @@ describe('xtpl', function () {
             expect(html).toBe('<&gt;foo20');
         });
 
-        const server = app.listen();
-        request(server)
+        request(app.callback())
           .get('/')
           .expect(200)
-          .expect('<&gt;foo20', ()=>{
-              console.log('oooo')
-              server.close();
-              done();
-          });
+          .expect('<&gt;foo20', done);
     });
 
     it('works for koa and absolute path', function (done) {
@@ -102,15 +95,10 @@ describe('xtpl', function () {
             });
             expect(html).toBe('<&gt;foo20');
         });
-        const server = app.listen();
-        request(server)
+        request(app.callback())
           .get('/')
           .expect(200)
-          .expect('<&gt;foo20', ()=>{
-              console.log('oooo')
-              server.close();
-              done();
-          });
+          .expect('<&gt;foo20', done);
 
     });
 });
