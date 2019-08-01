@@ -37,6 +37,6 @@
     "koa": "^2.7.0",
     "request": "^2.72.0",
     "supertest": "4.x",
-    "xtemplate": "5.x"
+    "xtemplate": "^5.0.8"
   }
 }
