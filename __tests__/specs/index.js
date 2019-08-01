@@ -1,7 +1,6 @@
 var xtpl = require('../../');
 var path = require('path');
 var xtplKoa = require('../../lib/koa2');
-var expect = require('expect.js');
 var request = require('supertest');
 var Koa=require('koa');
 
@@ -14,7 +13,7 @@ function normalizeSlash(path) {
 
 describe('xtpl', function () {
     it('can get XTemplate engine', function () {
-        expect(xtpl.XTemplate).not.to.be(undefined);
+        expect(xtpl.XTemplate).not.toBe(undefined);
     });
 
     it('works on node', function (done) {
@@ -22,39 +21,42 @@ describe('xtpl', function () {
             y: '<',
             x: '>'
         }, function (err, data) {
-            expect(err).to.be(null);
-            expect(data).to.be('<&gt;');
+            expect(err).toBe(null);
+            expect(data).toBe('<&gt;');
+            console.log('oooo')
             done();
         });
     });
 
     it('works on node when cached', function (done) {
+        function check(){
+            if (++count === 2) {
+                console.log('check');
+                done();
+            }
+        }
         var tplPath = normalizeSlash(path.resolve(__dirname, '../fixture/main.xtpl'));
         var count = 0;
-        expect(xtpl.getCache(tplPath).instance).not.to.be.ok();
+        expect(!!xtpl.getCache(tplPath).instance).toBe(false);
         xtpl.renderFile(tplPath, {
             y: '<',
             x: '>',
             cache: 1
         }, function (err, data) {
-            expect(err).to.be(null);
-            expect(data).to.be('<&gt;');
-            if (++count === 2) {
-                done();
-            }
+            expect(err).toBe(null);
+            expect(data).toBe('<&gt;');
+            check();
         });
         //console.log(xtpl.getCaches());
-        expect(xtpl.getCache(tplPath).instance.config.name).to.be(tplPath);
+        expect(xtpl.getCache(tplPath).instance.config.name).toBe(tplPath);
         xtpl.renderFile(tplPath, {
             y: '<',
             x: '>',
             cache: 1
         }, function (err, data) {
-            expect(err).to.be(null);
-            expect(data).to.be('<&gt;');
-            if (++count === 2) {
-                done();
-            }
+            expect(err).toBe(null);
+            expect(data).toBe('<&gt;');
+            check();
         });
     });
 
@@ -73,12 +75,18 @@ describe('xtpl', function () {
                 x: '>',
                 age: 20
             });
-            expect(html).to.be('<&gt;foo20');
+            expect(html).toBe('<&gt;foo20');
         });
-        request(app.listen())
+
+        const server = app.listen();
+        request(server)
           .get('/')
           .expect(200)
-          .expect('<&gt;foo20', done);
+          .expect('<&gt;foo20', ()=>{
+              console.log('oooo')
+              server.close();
+              done();
+          });
     });
 
     it('works for koa and absolute path', function (done) {
@@ -92,11 +100,17 @@ describe('xtpl', function () {
                 x: '>',
                 age: 20
             });
-            expect(html).to.be('<&gt;foo20');
+            expect(html).toBe('<&gt;foo20');
         });
-        request(app.listen())
+        const server = app.listen();
+        request(server)
           .get('/')
           .expect(200)
-          .expect('<&gt;foo20', done);
+          .expect('<&gt;foo20', ()=>{
+              console.log('oooo')
+              server.close();
+              done();
+          });
+
     });
 });

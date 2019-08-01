@@ -14,9 +14,9 @@
     "node": ">=0.10"
   },
   "scripts": {
-    "pub":"git push && npm publish",
-    "test": "node --harmony ./node_modules/mocha/bin/mocha --harmony -R list tests/specs",
-    "cover": "node --harmony ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha -- -R list tests/specs/"
+    "pub": "git push && npm publish",
+    "test": "jest",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -33,14 +33,10 @@
   },
   "devDependencies": {
     "coveralls": "~2.11.9",
-    "expect.js": "^0.3.1",
-    "express": "~3.4.8",
-    "istanbul": "~0.4.3",
+    "jest": "^24.8.0",
     "koa": "^2.7.0",
-    "mocha": "~2.5.3",
-    "mocha-istanbul": "~0.2.0",
     "request": "^2.72.0",
-    "supertest": "~1.2.0",
+    "supertest": "4.x",
     "xtemplate": "5.x"
   }
 }
